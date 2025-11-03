@@ -19,6 +19,8 @@ class ManageEmotionsView extends StatelessWidget {
         final tokens = AppTheme.tokens(context);
         final textTheme = Theme.of(context).textTheme;
         final emotions = appState.emotions;
+        final screenWidth = MediaQuery.of(context).size.width;
+        final isCompactAppBar = screenWidth < 420;
 
         final body = emotions.isEmpty
             ? _EmptyState(textTheme: textTheme)
@@ -38,18 +40,78 @@ class ManageEmotionsView extends StatelessWidget {
               icon: const Icon(Icons.arrow_back_rounded),
             ),
             title: const Text('Feeling Library'),
-            actions: [
-              IconButton(
-                tooltip: 'Arrange feelings',
-                onPressed: () => _showReorderSheet(context),
-                icon: const Icon(Icons.swap_vert_rounded),
-              ),
-              TextButton.icon(
-                onPressed: () => _showAddEmotionSheet(context),
-                icon: const Icon(Icons.add, size: 18),
-                label: const Text('Add feeling'),
-              ),
-            ],
+            toolbarHeight: isCompactAppBar ? 64 : null,
+            actions: isCompactAppBar
+                ? null
+                : [
+                    IconButton(
+                      tooltip: 'Arrange feelings',
+                      onPressed: () => _showReorderSheet(context),
+                      icon: const Icon(Icons.swap_vert_rounded),
+                    ),
+                    TextButton.icon(
+                      onPressed: () => _showAddEmotionSheet(context),
+                      icon: const Icon(Icons.add, size: 18),
+                      label: const Text('Add feeling'),
+                    ),
+                  ],
+            bottom: isCompactAppBar
+                ? PreferredSize(
+                    preferredSize: const Size.fromHeight(76),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                      child: LayoutBuilder(
+                        builder: (context, bottomConstraints) {
+                          final stackVertically = bottomConstraints.maxWidth < 360;
+
+                          Widget arrangeButton({required EdgeInsetsGeometry padding}) {
+                            return OutlinedButton.icon(
+                              onPressed: () => _showReorderSheet(context),
+                              icon: const Icon(Icons.swap_vert_rounded, size: 18),
+                              label: const Text('Arrange feelings'),
+                              style: OutlinedButton.styleFrom(
+                                padding: padding,
+                                foregroundColor: tokens.textPrimary,
+                                side: BorderSide(color: tokens.borderSecondary.withValues(alpha: 0.4)),
+                              ),
+                            );
+                          }
+
+                          Widget addButton({required EdgeInsetsGeometry padding}) {
+                            return FilledButton.icon(
+                              onPressed: () => _showAddEmotionSheet(context),
+                              icon: const Icon(Icons.add, size: 18),
+                              label: const Text('Add feeling'),
+                              style: FilledButton.styleFrom(
+                                padding: padding,
+                                backgroundColor: tokens.accentPrimary,
+                              ),
+                            );
+                          }
+
+                          if (stackVertically) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                arrangeButton(padding: const EdgeInsets.symmetric(vertical: 14)),
+                                const SizedBox(height: 12),
+                                addButton(padding: const EdgeInsets.symmetric(vertical: 14)),
+                              ],
+                            );
+                          }
+
+                          return Row(
+                            children: [
+                              Expanded(child: arrangeButton(padding: const EdgeInsets.symmetric(vertical: 14))),
+                              const SizedBox(width: 12),
+                              Expanded(child: addButton(padding: const EdgeInsets.symmetric(vertical: 14))),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  )
+                : null,
           ),
           body: body,
         );
@@ -274,17 +336,33 @@ class _EmotionGridView extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final columnWidth = 260.0;
-        final maxCrossAxisCount = (constraints.maxWidth / columnWidth).floor().clamp(1, 4);
-        final crossAxisCount = maxCrossAxisCount < 1 ? 1 : maxCrossAxisCount;
+        const horizontalPadding = 40.0; // GridView horizontal padding (20 + 20)
+        const spacing = 18.0;
+        const minTileWidth = 170.0;
+
+        final availableWidth = max(0.0, constraints.maxWidth - horizontalPadding);
+        var crossAxisCount = (availableWidth / minTileWidth).floor().clamp(1, 4);
+        if (crossAxisCount == 1 && constraints.maxWidth >= 320) {
+          crossAxisCount = 2;
+        }
+
+        final totalSpacing = spacing * (crossAxisCount - 1);
+        final itemWidth = crossAxisCount > 0 ? (availableWidth - totalSpacing) / crossAxisCount : availableWidth;
+        final isCompact = itemWidth < 220;
+        final isUltraCompact = itemWidth < 160;
+        final childAspectRatio = isUltraCompact
+            ? 1.28
+            : isCompact
+                ? 1.12
+                : 0.95;
 
         return GridView.builder(
           padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
-            mainAxisSpacing: 18,
-            crossAxisSpacing: 18,
-            childAspectRatio: 0.85,
+            mainAxisSpacing: spacing,
+            crossAxisSpacing: spacing,
+            childAspectRatio: childAspectRatio,
           ),
           itemCount: emotions.length,
           itemBuilder: (context, index) {
@@ -295,6 +373,7 @@ class _EmotionGridView extends StatelessWidget {
               paletteKey: paletteKey,
               tokens: tokens,
               textTheme: textTheme,
+              isCompact: isUltraCompact || isCompact,
               onTap: () => onTap(emotion),
               onEdit: () => onEdit(emotion),
               onDelete: () => onDelete(emotion),
@@ -312,6 +391,7 @@ class _EmotionTile extends StatelessWidget {
     required this.paletteKey,
     required this.tokens,
     required this.textTheme,
+    required this.isCompact,
     required this.onTap,
     required this.onEdit,
     required this.onDelete,
@@ -321,6 +401,7 @@ class _EmotionTile extends StatelessWidget {
   final String paletteKey;
   final FeelBetterTheme tokens;
   final TextTheme textTheme;
+  final bool isCompact;
   final VoidCallback onTap;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
@@ -331,18 +412,23 @@ class _EmotionTile extends StatelessWidget {
 
     final baseColor = tokens.backgroundSecondary;
     final borderColor = tokens.borderSecondary.withValues(alpha: 0.32);
+    final borderRadius = BorderRadius.circular(isCompact ? 20 : 28);
+    final tilePadding = EdgeInsets.fromLTRB(18, isCompact ? 18 : 22, 18, isCompact ? 20 : 24);
+    final iconSize = isCompact ? 34.0 : 42.0;
+    final spacingAfterHeader = isCompact ? 12.0 : 16.0;
+    final spacingAfterTitle = isCompact ? 6.0 : 8.0;
 
     return Material(
       color: Colors.transparent,
-      borderRadius: BorderRadius.circular(28),
-    child: InkWell(
+      borderRadius: borderRadius,
+      child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: borderRadius,
         child: Ink(
-          padding: const EdgeInsets.fromLTRB(20, 22, 20, 24),
+          padding: tilePadding,
           decoration: BoxDecoration(
             color: baseColor,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: borderRadius,
             border: Border.all(color: borderColor, width: 1.6),
             boxShadow: [
               BoxShadow(
@@ -359,7 +445,7 @@ class _EmotionTile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  EmotionIcon(icon: Icons.auto_awesome_rounded, paletteKey: paletteKey, size: 42),
+                  EmotionIcon(icon: Icons.auto_awesome_rounded, paletteKey: paletteKey, size: iconSize),
                   PopupMenuButton<String>(
                     onSelected: (value) {
                       switch (value) {
@@ -379,20 +465,25 @@ class _EmotionTile extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: spacingAfterHeader),
               Text(
                 emotion.name,
                 style: textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                   color: tokens.textPrimary,
+                  fontSize: isCompact ? 16 : null,
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: spacingAfterTitle),
               Text(
                 synonyms,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: textTheme.bodySmall?.copyWith(color: tokens.textSecondary, height: 1.4),
+                style: textTheme.bodySmall?.copyWith(
+                  color: tokens.textSecondary,
+                  height: 1.4,
+                  fontSize: isCompact ? 12 : null,
+                ),
               ),
             ],
           ),

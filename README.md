@@ -4,30 +4,39 @@
   <img src="assets/icon/app_icon.png" alt="Feel Better app icon" width="160" />
 </p>
 
-Feel Better is a cross-platform emotional support toolkit built with Flutter. It helps people track moods, explore evidence-informed coping strategies, and build healthier habits with a gentle, science-backed interface.
+Feel Better is a cross-platform emotional repair toolkit built with Flutter. It stays fully offline, puts your privacy first, and delivers minimal, science-backed workflows for settling your nervous system and repairing relationships when things feel heavy.
 
 ## Table of contents
 
 1. [Features](#features)
-2. [Architecture](#architecture)
-3. [Theming](#theming)
-4. [Screenshots](#screenshots)
-5. [Prerequisites](#prerequisites)
-6. [Getting started](#getting-started)
-7. [Development scripts](#development-scripts)
-8. [Testing](#testing)
-9. [Contributing](#contributing)
-10. [License](#license)
+2. [Philosophy](#philosophy)
+3. [Architecture](#architecture)
+4. [Theming](#theming)
+5. [Screenshots](#screenshots)
+6. [Prerequisites](#prerequisites)
+7. [Getting started](#getting-started)
+8. [Development scripts](#development-scripts)
+9. [Testing](#testing)
+10. [Contributing](#contributing)
+11. [License](#license)
 
 ## Features
 
-- **Emotion-first onboarding** – Quickly log what you are feeling and surface the most relevant support paths.
-- **Curated strategy library** – Immediate, short-term, long-term, and interpersonal tools organised by emotion.
-- **Quick strategy flows** – One-tap access to grounding techniques when feeling overwhelmed or low.
-- **Guided breathwork** – Built-in Breathe view for quick parasympathetic resets.
+- **Minimal, responsive calm home** – Compact quick-action hero that works beautifully on phones, tablets, and desktops.
+- **Evidence-rich strategy library** – Emotion pages surface immediate, short-term, long-term, relationship-support, and self-repair plans with source badges.
+- **Guided breathwork** – Built-in Breathe view provides quick parasympathetic resets.
 - **Journaling & history** – Capture reflections, review past logs, and maintain streaks that reinforce positive habits.
 - **Analytics dashboard** – Visualise emotion trends to identify triggers and patterns over time.
 - **Multi-theme support** – Seven evidence-informed themes (light/dark pairs) designed to reduce cognitive load and respect accessibility.
+- **Totally offline** – No accounts, no tracking, and all data stored locally.
+
+## Philosophy
+
+The `About this app` button exposes a fully scrollable philosophy dialog that captures the project’s promises:
+
+- **Free forever** – No paywalls or data monetisation.
+- **Private** – Journal entries, history, and strategies remain on-device.
+- **Ad-free** – A calming space with no distractions.
 
 ## Architecture
 
@@ -57,7 +66,7 @@ Each theme defines colour tokens for surface backgrounds, typography, elevation,
 
 ## Prerequisites
 
-- Flutter SDK >= 3.12
+- Flutter SDK >= 3.35.0 (stable channel recommended)
 - Dart >= 3.2
 - A recent version of Android Studio, VS Code, or another Flutter-capable IDE
 - For desktop builds, ensure the relevant platform tooling is installed (see [Flutter desktop docs](https://docs.flutter.dev/desktop)).
@@ -67,7 +76,7 @@ Each theme defines colour tokens for surface backgrounds, typography, elevation,
 ```bash
 # clone the repository
 git clone https://github.com/<your-account>/feel-better.git
-cd feel-better/"Flutter App"
+cd feel-better/Flutter_App
 
 # fetch dependencies
 flutter pub get

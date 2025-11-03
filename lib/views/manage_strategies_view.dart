@@ -19,6 +19,134 @@ class ManageStrategiesView extends StatefulWidget {
   State<ManageStrategiesView> createState() => _ManageStrategiesViewState();
 }
 
+class _RelationshipStrategyList extends StatelessWidget {
+  const _RelationshipStrategyList({super.key, required this.meta, required this.items});
+
+  final _CategoryMeta meta;
+  final List<StrategyItem> items;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = AppTheme.tokens(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    if (items.isEmpty) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Text(
+            meta.emptyHint,
+            textAlign: TextAlign.center,
+            style: textTheme.bodyLarge?.copyWith(color: tokens.textSecondary),
+          ),
+        ),
+      );
+    }
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
+      children: [
+        Text(
+          meta.intro,
+          style: textTheme.bodyMedium?.copyWith(color: tokens.textSecondary, height: 1.45),
+        ),
+        const SizedBox(height: 18),
+        for (var i = 0; i < items.length; i++) ...[
+          _RelationshipStrategyCard(item: items[i], meta: meta),
+          if (i != items.length - 1) const SizedBox(height: 16),
+        ],
+      ],
+    );
+  }
+}
+
+class _RelationshipStrategyCard extends StatelessWidget {
+  const _RelationshipStrategyCard({required this.item, required this.meta});
+
+  final StrategyItem item;
+  final _CategoryMeta meta;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = AppTheme.tokens(context);
+    final textTheme = Theme.of(context).textTheme;
+    final palette = tokens.emotion(meta.paletteKey);
+    final instructions = item.instructions;
+
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(24),
+      child: Ink(
+        padding: const EdgeInsets.fromLTRB(20, 22, 20, 20),
+        decoration: BoxDecoration(
+          color: tokens.backgroundSecondary,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: tokens.borderSecondary.withValues(alpha: 0.28)),
+          boxShadow: [
+            BoxShadow(
+              color: tokens.shadowColor.withValues(alpha: tokens.isDark ? 0.28 : 0.16),
+              blurRadius: 18,
+              offset: const Offset(0, 12),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                EmotionIcon(icon: meta.icon, paletteKey: meta.paletteKey, size: 34),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Text(
+                    item.title,
+                    style: textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: tokens.textPrimary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            if (instructions.isNotEmpty) ...[
+              const SizedBox(height: 14),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (var i = 0; i < instructions.length; i++)
+                    Padding(
+                      padding: EdgeInsets.only(bottom: i == instructions.length - 1 ? 0 : 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('•', style: textTheme.bodyMedium?.copyWith(color: palette.text)),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              instructions[i],
+                              style: textTheme.bodyMedium?.copyWith(color: tokens.textSecondary, height: 1.45),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ] else ...[
+              const SizedBox(height: 12),
+              Text(
+                'No checkpoints included. Use the web experience to add them.',
+                style: textTheme.bodySmall?.copyWith(color: tokens.textSecondary, fontStyle: FontStyle.italic),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _ManageStrategiesViewState extends State<ManageStrategiesView> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
   late List<_CategoryMeta> _categories;
@@ -27,11 +155,52 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
   void initState() {
     super.initState();
     _categories = const [
-      _CategoryMeta(StrategyCategory.immediate, 'Immediate', 'Start with one simple checkpoint you can do right now.'),
-      _CategoryMeta(StrategyCategory.shortTerm, 'Short term', 'Add steps you can take in the next few hours.'),
-      _CategoryMeta(StrategyCategory.longTerm, 'Long term', 'Capture routines that keep the change going.'),
+      _CategoryMeta.editable(
+        category: StrategyCategory.immediate,
+        label: 'Immediate',
+        intro: 'Start with one simple checkpoint you can do right now.',
+        emptyHint: 'No immediate strategies yet. Tap “Add strategy” to create one.',
+        icon: Icons.bolt_rounded,
+        paletteKey: 'rose',
+      ),
+      _CategoryMeta.editable(
+        category: StrategyCategory.shortTerm,
+        label: 'Short term',
+        intro: 'Add steps you can take in the next few hours.',
+        emptyHint: 'No short-term strategies yet. Tap “Add strategy” to create one.',
+        icon: Icons.access_time_filled_rounded,
+        paletteKey: 'teal',
+      ),
+      _CategoryMeta.editable(
+        category: StrategyCategory.longTerm,
+        label: 'Long term',
+        intro: 'Capture routines that keep the change going.',
+        emptyHint: 'No long-term strategies yet. Tap “Add strategy” to create one.',
+        icon: Icons.eco_rounded,
+        paletteKey: 'slate',
+      ),
+      _CategoryMeta.readOnly(
+        relationship: _RelationshipCategory.supportingFriend,
+        label: 'Relationship support',
+        intro: 'Bring someone alongside you with co-regulation ideas.',
+        emptyHint: 'No relationship support strategies available yet.',
+        icon: Icons.diversity_3_rounded,
+        paletteKey: 'violet',
+      ),
+      _CategoryMeta.readOnly(
+        relationship: _RelationshipCategory.repairingWhenResponsible,
+        label: 'Repair & reconnect',
+        intro: 'Steps to make things right when you contributed to the feeling.',
+        emptyHint: 'No repair strategies available yet.',
+        icon: Icons.healing_rounded,
+        paletteKey: 'amber',
+      ),
     ];
     _tabController = TabController(length: _categories.length, vsync: this);
+    _tabController.addListener(() {
+      if (!mounted) return;
+      setState(() {});
+    });
   }
 
   @override
@@ -70,29 +239,41 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
                   .map(
                     (meta) => Tab(
                       text: meta.label,
-                      icon: EmotionIcon(icon: _iconFor(meta.category), paletteKey: _paletteFor(meta.category), size: 20),
+                      icon: EmotionIcon(icon: meta.icon, paletteKey: meta.paletteKey, size: 20),
                     ),
                   )
                   .toList(),
             ),
           ),
-          floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => _openStrategyForm(context, strategySet, currentCategory, null),
-            icon: const Icon(Icons.add_task_rounded),
-            label: const Text('Add strategy'),
-          ),
+          floatingActionButton: _categories[_tabController.index].isEditable
+              ? FloatingActionButton.extended(
+                  onPressed: () => _openStrategyForm(context, strategySet, _categories[_tabController.index].category!, null),
+                  icon: const Icon(Icons.add_task_rounded),
+                  label: const Text('Add strategy'),
+                )
+              : null,
           body: TabBarView(
             controller: _tabController,
             children: _categories
                 .map(
-                  (meta) => _StrategyList(
-                    key: PageStorageKey('${widget.emotionId}-${meta.category.name}'),
-                    emotionId: widget.emotionId,
-                    category: meta.category,
-                    items: strategySet.listFor(meta.category),
-                    onEdit: (item) => _openStrategyForm(context, strategySet, meta.category, item),
-                    emptyHint: meta.hint,
-                  ),
+                  (meta) {
+                    final items = meta.itemsFor(strategySet);
+                    if (meta.isEditable) {
+                      return _StrategyList(
+                        key: PageStorageKey('${widget.emotionId}-${meta.storageKey}'),
+                        emotionId: widget.emotionId,
+                        category: meta.category!,
+                        items: items,
+                        onEdit: (item) => _openStrategyForm(context, strategySet, meta.category!, item),
+                        emptyHint: meta.emptyHint,
+                      );
+                    }
+                    return _RelationshipStrategyList(
+                      key: PageStorageKey('${widget.emotionId}-${meta.storageKey}'),
+                      meta: meta,
+                      items: items,
+                    );
+                  },
                 )
                 .toList(),
           ),
@@ -101,7 +282,7 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
     );
   }
 
-  StrategyCategory get currentCategory => _categories[_tabController.index].category;
+  StrategyCategory? get currentCategory => _categories[_tabController.index].category;
 
   void _openStrategyForm(
     BuildContext context,
@@ -564,31 +745,75 @@ class _StrategyFormSheetState extends State<_StrategyFormSheet> {
 }
 
 class _CategoryMeta {
-  const _CategoryMeta(this.category, this.label, this.hint);
+  const _CategoryMeta._({
+    required this.category,
+    required this.relationship,
+    required this.label,
+    required this.intro,
+    required this.emptyHint,
+    required this.icon,
+    required this.paletteKey,
+    required this.isEditable,
+  });
 
-  final StrategyCategory category;
+  const _CategoryMeta.editable({
+    required StrategyCategory category,
+    required String label,
+    required String intro,
+    required String emptyHint,
+    required IconData icon,
+    required String paletteKey,
+  }) : this._(
+          category: category,
+          relationship: null,
+          label: label,
+          intro: intro,
+          emptyHint: emptyHint,
+          icon: icon,
+          paletteKey: paletteKey,
+          isEditable: true,
+        );
+
+  const _CategoryMeta.readOnly({
+    required _RelationshipCategory relationship,
+    required String label,
+    required String intro,
+    required String emptyHint,
+    required IconData icon,
+    required String paletteKey,
+  }) : this._(
+          category: null,
+          relationship: relationship,
+          label: label,
+          intro: intro,
+          emptyHint: emptyHint,
+          icon: icon,
+          paletteKey: paletteKey,
+          isEditable: false,
+        );
+
+  final StrategyCategory? category;
+  final _RelationshipCategory? relationship;
   final String label;
-  final String hint;
-}
+  final String intro;
+  final String emptyHint;
+  final IconData icon;
+  final String paletteKey;
+  final bool isEditable;
 
-IconData _iconFor(StrategyCategory category) {
-  switch (category) {
-    case StrategyCategory.immediate:
-      return Icons.bolt_rounded;
-    case StrategyCategory.shortTerm:
-      return Icons.access_time_filled_rounded;
-    case StrategyCategory.longTerm:
-      return Icons.eco_rounded;
+  String get storageKey => category != null ? category!.name : 'rel-${relationship!.name}';
+
+  List<StrategyItem> itemsFor(EmotionStrategySet set) {
+    if (category != null) {
+      return set.listFor(category!);
+    }
+    switch (relationship!) {
+      case _RelationshipCategory.supportingFriend:
+        return set.supportingFriend;
+      case _RelationshipCategory.repairingWhenResponsible:
+        return set.repairingWhenResponsible;
+    }
   }
 }
 
-String _paletteFor(StrategyCategory category) {
-  switch (category) {
-    case StrategyCategory.immediate:
-      return 'rose';
-    case StrategyCategory.shortTerm:
-      return 'teal';
-    case StrategyCategory.longTerm:
-      return 'slate';
-  }
-}
+enum _RelationshipCategory { supportingFriend, repairingWhenResponsible }

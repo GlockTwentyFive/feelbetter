@@ -383,14 +383,10 @@ class _FeelBetterAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: Icon(Icons.info_outline, color: Theme.of(context).colorScheme.secondary),
           ),
           const SizedBox(width: 8),
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: ThemeSwitcher(themeId: appState.themeId, onThemeChanged: appState.setTheme),
-            ),
-          ),
+          ThemeSwitcher(themeId: appState.themeId, onThemeChanged: appState.setTheme),
           if (!isCompact) ...[
             const SizedBox(width: 12),
+            const Spacer(),
             _StreakBadge(streak: appState.streak),
           ],
         ],

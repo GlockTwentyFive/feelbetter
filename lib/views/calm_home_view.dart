@@ -97,7 +97,6 @@ class _QuickStartHero extends StatelessWidget {
     final tokens = AppTheme.tokens(context);
     final textTheme = Theme.of(context).textTheme;
 
-    final tagLabels = ['Quick relief', 'Science-backed', 'Kind and gentle'];
     final quickActions = _buildQuickActions(tokens);
 
     final maxHeroWidth = isWide ? 880.0 : (isCompact ? double.infinity : 720.0);
@@ -162,42 +161,11 @@ class _QuickStartHero extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'How can I help right now?',
+                  'What do you need right now?',
                   textAlign: TextAlign.center,
                   style: headlineStyle,
                 ),
-                const SizedBox(height: 16),
-                Wrap(
-                  spacing: isCompact ? 6 : 12,
-                  runSpacing: isCompact ? 6 : 8,
-                  alignment: WrapAlignment.center,
-                  runAlignment: WrapAlignment.center,
-                  children: [
-                    for (final label in tagLabels)
-                      DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: tokens.backgroundPrimary.withValues(alpha: tokens.isDark ? 0.42 : 0.82),
-                          borderRadius: BorderRadius.circular(999),
-                          border: Border.all(color: tokens.borderSecondary.withValues(alpha: 0.28)),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: isCompact ? 12 : 14,
-                            vertical: isCompact ? 7 : 9,
-                          ),
-                          child: Text(
-                            label,
-                            style: (isCompact ? textTheme.labelMedium : textTheme.labelLarge)?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.35,
-                              color: tokens.textPrimary,
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 34),
+                const SizedBox(height: 28),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -205,7 +173,6 @@ class _QuickStartHero extends StatelessWidget {
                       _HeroActionCard(
                         tokens: tokens,
                         title: quickActions[i].title,
-                        subtitle: quickActions[i].subtitle,
                         icon: quickActions[i].icon,
                         gradient: quickActions[i].gradient,
                         onPressed: () => showQuickAction(quickActions[i]),
@@ -225,8 +192,7 @@ class _QuickStartHero extends StatelessWidget {
   List<_QuickActionData> _buildQuickActions(FeelBetterTheme tokens) {
     return [
       _QuickActionData(
-        title: 'Not sure what I feel',
-        subtitle: 'Steady your body and mind in two minutes.',
+        title: 'Steady me',
         icon: Icons.self_improvement_rounded,
         gradient: [tokens.accentPrimary, tokens.accentSecondary],
         intro: 'Use this quick grounding sequence when everything feels fuzzy and you need a calmer baseline first.',
@@ -246,8 +212,7 @@ class _QuickStartHero extends StatelessWidget {
         ],
       ),
       _QuickActionData(
-        title: 'Help me pick my next step',
-        subtitle: 'A simple check-in when you can’t name the feeling.',
+        title: 'Pick my next move',
         icon: Icons.explore_rounded,
         gradient: [tokens.accentTertiary, tokens.accentPrimary],
         intro: 'Walk through these prompts to spot what needs care right now and choose a small move.',
@@ -393,7 +358,6 @@ class _QuickActionSheet extends StatelessWidget {
 class _QuickActionData {
   const _QuickActionData({
     required this.title,
-    required this.subtitle,
     required this.icon,
     required this.gradient,
     required this.intro,
@@ -401,7 +365,6 @@ class _QuickActionData {
   });
 
   final String title;
-  final String subtitle;
   final IconData icon;
   final List<Color> gradient;
   final String intro;
@@ -419,7 +382,6 @@ class _HeroActionCard extends StatelessWidget {
   const _HeroActionCard({
     required this.tokens,
     required this.title,
-    required this.subtitle,
     required this.icon,
     required this.gradient,
     required this.onPressed,
@@ -427,7 +389,6 @@ class _HeroActionCard extends StatelessWidget {
 
   final FeelBetterTheme tokens;
   final String title;
-  final String subtitle;
   final IconData icon;
   final List<Color> gradient;
   final VoidCallback onPressed;
@@ -438,7 +399,6 @@ class _HeroActionCard extends StatelessWidget {
     final surface = tokens.backgroundSecondary.withValues(alpha: tokens.isDark ? 0.92 : 0.98);
     final borderColor = tokens.borderSecondary.withValues(alpha: 0.28);
     final titleColor = tokens.textPrimary;
-    final bodyColor = tokens.textSecondary;
     final iconColor = tokens.accentPrimary;
     final iconBackground = tokens.accentPrimary.withValues(alpha: 0.15);
 
@@ -485,14 +445,6 @@ class _HeroActionCard extends StatelessWidget {
                       style: textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                         color: titleColor,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      subtitle,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: bodyColor,
-                        height: 1.45,
                       ),
                     ),
                   ],
