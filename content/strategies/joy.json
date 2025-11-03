@@ -1,0 +1,231 @@
+{
+  "emotion_id": "joy",
+  "display_name": "Joy",
+  "affect_tone": "gold",
+  "scientific_summary": "Positive emotion broadens cognition and builds resources (Fredrickson, 2004). Reinforcing savoring and prosocial acts sustains well-being.",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "joy-savor-3breaths",
+        "title": "Savor three breaths",
+        "modality": "somatic",
+        "duration_seconds": 45,
+        "instructions": [
+          "Pause and breathe in slowly for four counts while noticing one pleasant sensation.",
+          "Hold for two counts as you label the feeling (e.g., warm, light, energized).",
+          "Exhale for six counts, mentally repeating the word that captures the joy." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Fredrickson, Positive Psychology Progress, 2005",
+          "summary": "Brief savoring exercises broaden thought–action repertoires and enhance positive affect." 
+        }
+      },
+      {
+        "id": "joy-share-capitalization",
+        "title": "Share the good news",
+        "modality": "relational",
+        "duration_minutes": 2,
+        "instructions": [
+          "Send a quick message to someone you trust describing the moment of joy in one sentence.",
+          "Ask them to celebrate with you (e.g., 'Can we take 30 seconds to enjoy this victory?').",
+          "Notice their response and jot one word about how the sharing felt." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gable et al., Journal of Personality and Social Psychology, 2004",
+          "summary": "Capitalization (sharing positive events) increases relationship satisfaction and positive affect." 
+        }
+      },
+      {
+        "id": "joy-body-expansion",
+        "title": "Power of posture",
+        "modality": "somatic",
+        "duration_seconds": 75,
+        "instructions": [
+          "Stand or sit upright, opening your chest and extending arms outward for 30 seconds.",
+          "Smile gently and breathe in through the nose, out through the mouth.",
+          "As you exhale, name one word that captures the joy in your body." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Cuddy et al., Psychological Science, 2012",
+          "summary": "Expansive postures enhance positive affect and perceived resourcefulness." 
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "joy-gratitude-triad",
+        "title": "Gratitude triad",
+        "modality": "cognitive",
+        "duration_minutes": 5,
+        "instructions": [
+          "List three things that went well in the last 24 hours.",
+          "Write one sentence for each about why it happened.",
+          "Close your eyes and re-experience the feelings for 10 seconds per item." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Emmons & McCullough, Journal of Personality and Social Psychology, 2003",
+          "summary": "Daily gratitude journaling boosts positive affect and life satisfaction." 
+        }
+      },
+      {
+        "id": "joy-kindness-micro",
+        "title": "Micro act of kindness",
+        "modality": "behavioral",
+        "duration_minutes": 10,
+        "instructions": [
+          "Identify one tiny supportive act you can complete today (text encouragement, small favor).",
+          "Complete the act mindfully, focusing on intention rather than outcome.",
+          "Reflect on how the act reinforced your sense of connection." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Lyubomirsky et al., Review of General Psychology, 2005",
+          "summary": "Intentional acts of kindness increase sustained positive emotion and well-being." 
+        }
+      },
+      {
+        "id": "joy-strength-spotting",
+        "title": "Strength spotting",
+        "modality": "cognitive",
+        "duration_minutes": 12,
+        "instructions": [
+          "Review a recent joyful event and list three personal strengths you used (creativity, humor, perseverance).",
+          "Describe how each strength contributed to the moment.",
+          "Plan one way to apply one of the strengths tomorrow." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Seligman et al., American Psychologist, 2005",
+          "summary": "Identifying and applying signature strengths sustains happiness gains." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "joy-positive-portfolio",
+        "title": "Positive portfolio review",
+        "modality": "cognitive",
+        "cadence": "weekly",
+        "duration_minutes": 15,
+        "instructions": [
+          "Collect mementos (photos, quotes, notes) representing moments of joy.",
+          "Once per week, review the collection and write one new insight about what sparks joy for you.",
+          "Update the portfolio with one additional item that emerged during the week." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Seligman et al., American Psychologist, 2005",
+          "summary": "Positive reminiscence exercises enhance happiness and reduce depressive symptoms." 
+        }
+      },
+      {
+        "id": "joy-flow-map",
+        "title": "Flow map planning",
+        "modality": "behavioral",
+        "cadence": "biweekly",
+        "duration_minutes": 20,
+        "instructions": [
+          "List activities where you lose track of time (flow states).",
+          "Schedule one session in the next week, noting time, place, and resources needed.",
+          "After the activity, journal one sentence on how the experience influenced your energy." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Csikszentmihalyi, Flow: The Psychology of Optimal Experience, 1990",
+          "summary": "Deliberate engagement in flow-promoting tasks sustains positive mood and engagement." 
+        }
+      },
+      {
+        "id": "joy-prosocial-calendar",
+        "title": "Prosocial joy calendar",
+        "modality": "behavioral",
+        "cadence": "monthly",
+        "duration_minutes": 25,
+        "instructions": [
+          "Map out one meaningful prosocial activity (volunteering, mentoring, community event) for the coming month.",
+          "Schedule it with a specific date and partner if possible.",
+          "After completing the activity, journal the emotional impact and lessons learned." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Aknin et al., Social Psychological and Personality Science, 2013",
+          "summary": "Regular prosocial engagement amplifies positive affect and life satisfaction over time." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "joy-friend-celebration",
+        "title": "Celebrate their win",
+        "modality": "interpersonal",
+        "duration_minutes": 8,
+        "instructions": [
+          "Ask your friend to replay the joyful moment in detail while you listen closely.",
+          "Mirror back specific strengths you heard (\"Your dedication really paid off\").",
+          "Offer a small ritual to mark the joy together (toast, shared song, short walk)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gable & Reis, Journal of Personality and Social Psychology, 2010",
+          "summary": "Active-constructive responding to good news deepens relational satisfaction and joy." 
+        }
+      },
+      {
+        "id": "joy-friend-expand",
+        "title": "Amplify their possibilities",
+        "modality": "communication",
+        "duration_minutes": 7,
+        "instructions": [
+          "Invite your friend to imagine one way their joyful moment could grow into something larger.",
+          "Brainstorm together one supportive step you can take to help (introduction, resource, accountability).",
+          "Schedule a follow-up check-in to hear what unfolded." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Algoe et al., Emotion, 2013",
+          "summary": "Broadening-and-building behaviors from close others increase joy durability." 
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "joy-repair-diminish",
+        "title": "Repair after dampening joy",
+        "modality": "communication",
+        "duration_minutes": 6,
+        "instructions": [
+          "Own the dampening behavior (\"I downplayed your news earlier\").",
+          "Express genuine appreciation for their achievement or happy moment.",
+          "Ask how they would like to celebrate now and follow through." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Reis et al., Emotion, 2010",
+          "summary": "Repairing capitalization failures restores positive emotion and trust in relationships." 
+        }
+      },
+      {
+        "id": "joy-repair-support-plan",
+        "title": "Set a support intention",
+        "modality": "behavioral",
+        "duration_minutes": 9,
+        "instructions": [
+          "Reflect on why you minimized someone’s joy (stress, envy, distraction).",
+          "Plan a concrete action that spotlights their success (public praise, gift, quality time).",
+          "Commit to a reminder system (calendar, note) so future celebrations receive full attention." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Imrie et al., The Journal of Positive Psychology, 2019",
+          "summary": "Intentional celebration plans increase supportive behaviors and shared happiness." 
+        }
+      }
+    ]
+  }
+}

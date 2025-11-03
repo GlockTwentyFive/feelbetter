@@ -1,0 +1,231 @@
+{
+  "emotion_id": "surprise",
+  "display_name": "Surprise",
+  "affect_tone": "sky",
+  "scientific_summary": "Surprise can be startling or delightful. Orienting responses and meaning-making help integrate unexpected events (Meyer et al., 1997).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "surprise-orient",
+        "title": "Orient and label",
+        "modality": "somatic",
+        "duration_seconds": 60,
+        "instructions": [
+          "Pause and take one slow breath in through the nose and out through the mouth.",
+          "Name three details about what just happened (who, what, where).",
+          "Label the surprise as 'pleasant', 'unpleasant', or 'neutral' to reduce ambiguity." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Meyer et al., Psychological Review, 1997",
+          "summary": "Cognitive appraisal theory shows labeling unexpected stimuli reduces arousal and guides coping." 
+        }
+      },
+      {
+        "id": "surprise-startle-release",
+        "title": "Startle release",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "If the surprise felt jarring, roll your shoulders back and shake arms gently for ten seconds.",
+          "Stretch your neck side-to-side while exhaling slowly.",
+          "End with one diaphragmatic breath to signal the body the startle has passed." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Blumenthal et al., Psychophysiology, 2005",
+          "summary": "Gentle muscular release reduces residual startle responses and restores baseline arousal." 
+        }
+      },
+      {
+        "id": "surprise-sensory-scan",
+        "title": "Five-sense reset",
+        "modality": "mindfulness",
+        "duration_seconds": 120,
+        "instructions": [
+          "List aloud five things you can see, four you can touch, three you can hear, two you can smell, one you can taste.",
+          "Keep breaths slow while moving through the senses.",
+          "Note how your heart rate shifts as your brain registers safety." 
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "American Psychological Association, Grounding Techniques Review, 2020",
+          "summary": "Grounding through sensory orientation reduces shock and aids cognitive integration." 
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "surprise-meaning-map",
+        "title": "Meaning map",
+        "modality": "cognitive",
+        "duration_minutes": 8,
+        "instructions": [
+          "Write down the unexpected event and your initial reaction.",
+          "List two possible positive implications and two challenges created by the surprise.",
+          "Note one action you can take today to respond constructively." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Park, Review of General Psychology, 2010",
+          "summary": "Meaning-making after unexpected events improves psychological adjustment." 
+        }
+      },
+      {
+        "id": "surprise-share-reflection",
+        "title": "Share the story",
+        "modality": "relational",
+        "duration_minutes": 6,
+        "instructions": [
+          "Tell a trusted person about the surprise in three sentences.",
+          "Ask them for one perspective or encouragement.",
+          "Write down any new insight gained from the conversation." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Pennebaker & Chung, Expressive Writing Research, 2011",
+          "summary": "Expressing surprising events verbally aids emotional processing and integration." 
+        }
+      },
+      {
+        "id": "surprise-action-plan",
+        "title": "Next-step triage",
+        "modality": "behavioral",
+        "duration_minutes": 7,
+        "instructions": [
+          "Draft three quick questions: What is stable? What needs action? Who can help?",
+          "Answer each in one sentence to separate urgency from noise.",
+          "Schedule or perform the smallest viable action within the next hour." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Bonanno, American Psychologist, 2004",
+          "summary": "Rapid meaning-and-action planning improves resilience to unexpected change." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "surprise-flex-practice",
+        "title": "Cognitive flexibility practice",
+        "modality": "cognitive",
+        "cadence": "weekly",
+        "duration_minutes": 20,
+        "instructions": [
+          "Pick a routine task and do it in a new order or environment (e.g., different route, new recipe).",
+          "Journal how the change felt and what you learned about adapting.",
+          "Rate your comfort with novelty from 1–10 and note trends over time." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Martin & Rubin, Communication Research Reports, 1995",
+          "summary": "Practicing cognitive flexibility enhances resilience to unexpected events." 
+        }
+      },
+      {
+        "id": "surprise-growth-journal",
+        "title": "Growth reflection journal",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 15,
+        "instructions": [
+          "List three surprises from the past month.",
+          "Identify what each taught you or how it nudged growth.",
+          "Set one intention for welcoming future positive surprises." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Tedeschi & Calhoun, Psychological Inquiry, 2004",
+          "summary": "Reflecting on unexpected events fosters post-traumatic and post-event growth." 
+        }
+      },
+      {
+        "id": "surprise-innovation-journal",
+        "title": "Innovation journal",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 18,
+        "instructions": [
+          "Record surprising moments that led to positive innovations or changes.",
+          "Identify patterns in how you responded well.",
+          "Set an intention to replicate one adaptive response in the coming month." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Kashdan & Rottenberg, Clinical Psychology Review, 2010",
+          "summary": "Tracking positive surprise responses enhances psychological flexibility and growth." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "surprise-friend-grounding",
+        "title": "Ground with them",
+        "modality": "interpersonal",
+        "duration_minutes": 6,
+        "instructions": [
+          "Invite your friend to breathe with you and describe what happened factually.",
+          "Reflect back the key feeling words you hear (startled, delighted, confused).",
+          "Ask what support they need next and offer one concrete option (call, plan, quiet time)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Porges, Frontiers in Psychology, 2011",
+          "summary": "Co-regulation with a trusted person stabilizes autonomic responses after startling events." 
+        }
+      },
+      {
+        "id": "surprise-friend-story",
+        "title": "Help them shape the story",
+        "modality": "communication",
+        "duration_minutes": 8,
+        "instructions": [
+          "Ask your friend to walk through the surprise chronologically while you take notes.",
+          "Highlight strengths and resources they used to handle it.",
+          "Offer to draft a summary text/email with them if action is required." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "McAdams & McLean, Journal of Personality, 2013",
+          "summary": "Collaborative narrative construction increases coherence and emotional relief." 
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "surprise-repair-startle",
+        "title": "Repair if I startled them",
+        "modality": "communication",
+        "duration_minutes": 5,
+        "instructions": [
+          "Acknowledge the unintentional surprise and its impact (\"I jumped out and scared you; I see it spiked your heart rate\").",
+          "Offer a sincere apology and validate their reaction.",
+          "Ask what boundaries they'd prefer for future surprises." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Baumeister et al., Review of General Psychology, 1994",
+          "summary": "Acknowledging emotional impact and adjusting behavior restores trust after unwanted surprises." 
+        }
+      },
+      {
+        "id": "surprise-repair-missed-joy",
+        "title": "Make up for missing their surprise",
+        "modality": "behavioral",
+        "duration_minutes": 9,
+        "instructions": [
+          "If you failed to respond to their exciting surprise, plan a belated celebration (call, gift, shared activity).",
+          "Express genuine enthusiasm and reference the details you missed.",
+          "Set a reminder to acknowledge future surprises promptly." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Reis et al., Emotion, 2010",
+          "summary": "Responsive engagement with partners' positive events strengthens relational bonds after misses." 
+        }
+      }
+    ]
+  }
+}

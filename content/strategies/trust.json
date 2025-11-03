@@ -1,0 +1,231 @@
+{
+  "emotion_id": "trust",
+  "display_name": "Trust",
+  "affect_tone": "teal",
+  "scientific_summary": "Interpersonal trust strengthens through attachment-consistent behaviors, oxytocin-linked rituals, and consistent boundary work (Mikolajczak et al., 2010).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "trust-body-scan",
+        "title": "Anchor to a safe memory",
+        "modality": "somatic",
+        "duration_seconds": 75,
+        "instructions": [
+          "Close your eyes and recall a moment you felt grounded with someone reliable.",
+          "Notice where the sense of safety lands in your body (chest, shoulders, hands).",
+          "Breathe slowly into that area for five cycles, repeating the phrase 'I am supported'."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Cozolino, The Neuroscience of Human Relationships, 2014",
+          "summary": "Recalling secure attachment experiences reduces stress responses and increases trust signals." 
+        }
+      },
+      {
+        "id": "trust-oxytocin-touch",
+        "title": "Warm touch reset",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "Place a warm hand over your heart or hug yourself gently.",
+          "Spend three slow breaths focusing on the warmth and pressure.",
+          "Optional: if with a trusted person, exchange a 20-second hug to release oxytocin." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Heinrichs et al., Biological Psychiatry, 2009",
+          "summary": "Warm touch increases oxytocin release, strengthening trust and prosocial feelings." 
+        }
+      },
+      {
+        "id": "trust-micro-affirmation",
+        "title": "Micro affirmation breath",
+        "modality": "mindfulness",
+        "duration_seconds": 60,
+        "instructions": [
+          "On each inhale, silently say 'I can lean in'; on each exhale, say 'I am held'.",
+          "Repeat for six cycles while pressing thumb and forefinger together as an anchoring cue.",
+          "Recall one recent instance someone followed through for you."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Fredrickson, American Psychologist, 2013",
+          "summary": "Brief loving-kindness phrases increase oxytocin-linked trust and calm."
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "trust-boundary-check",
+        "title": "Boundary affirmation",
+        "modality": "cognitive",
+        "duration_minutes": 7,
+        "instructions": [
+          "List one boundary that keeps you safe in relationships (e.g., time, tone, honesty).",
+          "Write a sentence about how you will communicate or uphold this boundary this week.",
+          "Visualize yourself stating it assertively and the outcome feeling respected." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "American Psychological Association, Assertiveness Training Review, 2017",
+          "summary": "Clear boundary setting increases perceived control and trust in relationships." 
+        }
+      },
+      {
+        "id": "trust-gratitude-letter",
+        "title": "Gratitude micro-letter",
+        "modality": "relational",
+        "duration_minutes": 10,
+        "instructions": [
+          "Write a short note (or voice memo) thanking someone for a specific act of reliability.",
+          "Include details about how the act made you feel calm or supported.",
+          "Send it, or if not sending, read it aloud to reinforce the neural pathways of trust." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Algoe & Haidt, Emotion, 2009",
+          "summary": "Expressing gratitude strengthens interpersonal trust and connection." 
+        }
+      },
+      {
+        "id": "trust-shared-agenda",
+        "title": "Shared agenda planning",
+        "modality": "behavioral",
+        "duration_minutes": 12,
+        "instructions": [
+          "With a partner or teammate, list mutual goals for the week.",
+          "Assign clear owners and deadlines for each task.",
+          "Schedule a midpoint check-in to review progress."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "McAllister, Academy of Management Journal, 1995",
+          "summary": "Clear role agreements and follow-through strengthen cognitive trust."
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "trust-ritual",
+        "title": "Weekly trust ritual",
+        "modality": "behavioral",
+        "cadence": "weekly",
+        "duration_minutes": 20,
+        "instructions": [
+          "Schedule a recurring check-in with a trusted partner/friend to share wins and worries.",
+          "Use active listening (reflect back what you heard) for at least five minutes each.",
+          "Close by naming one appreciative statement about the relationship." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gottman & Silver, The Seven Principles for Making Marriage Work, 2015",
+          "summary": "Regular appreciation and check-ins build trust and emotional bank accounts." 
+        }
+      },
+      {
+        "id": "trust-self-trust-journal",
+        "title": "Self-trust journal",
+        "modality": "cognitive",
+        "cadence": "twice-weekly",
+        "duration_minutes": 12,
+        "instructions": [
+          "Document three decisions you made this week and how you honored your needs.",
+          "Note any moments where you overrode your intuition and what you learned.",
+          "Set one micro-intention for self-trust in the coming days (e.g., pausing before saying yes)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Neff & Germer, Self-Compassion Research, 2018",
+          "summary": "Self-trust practices rooted in self-compassion improve emotional resilience and relationship trust." 
+        }
+      },
+      {
+        "id": "trust-repair-playbook",
+        "title": "Repair playbook",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 18,
+        "instructions": [
+          "Reflect on a past rupture that was repaired well and extract the steps used.",
+          "Outline a three-step repair protocol (acknowledge, empathize, plan) for future conflicts.",
+          "Share the playbook with trusted people so expectations are aligned."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gottman & Levenson, Journal of Consulting and Clinical Psychology, 1992",
+          "summary": "Couples who practice explicit repair scripts maintain higher trust after conflict."
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "trust-friend-consistency",
+        "title": "Consistency check",
+        "modality": "interpersonal",
+        "duration_minutes": 10,
+        "instructions": [
+          "Ask your friend which supportive behaviors help them feel secure (updates, punctuality).",
+          "Brainstorm how you can deliver one of those behaviors this week.",
+          "Confirm how they will let you know if needs shift."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Reis et al., Emotion, 2010",
+          "summary": "Responsive adjustments to partner cues foster interpersonal trust."
+        }
+      },
+      {
+        "id": "trust-friend-affirm-story",
+        "title": "Affirm their reliability story",
+        "modality": "communication",
+        "duration_minutes": 7,
+        "instructions": [
+          "Invite your friend to share a time they showed up for someone else.",
+          "Reflect the character strengths you heard (steadfast, thoughtful).",
+          "Encourage them to keep a note of these stories for moments of doubt."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Lambert & Fincham, Journal of Positive Psychology, 2011",
+          "summary": "Reminding partners of past reliability increases perceived trustworthiness."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "trust-repair-breach",
+        "title": "Repair after a trust breach",
+        "modality": "communication",
+        "duration_minutes": 10,
+        "instructions": [
+          "Describe the breach factually (\"I missed the deadline I promised\").",
+          "Acknowledge the emotional impact and what it cost the other person.",
+          "Offer restitution and a prevention plan with specific checkpoints."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Kim et al., Academy of Management Journal, 2004",
+          "summary": "Comprehensive apologies with restitution restore trust more effectively than simple sorrys."
+        }
+      },
+      {
+        "id": "trust-repair-self-trust",
+        "title": "Rebuild self-trust routine",
+        "modality": "behavioral",
+        "duration_minutes": 15,
+        "instructions": [
+          "List two commitments you have to yourself that were broken (rest, boundaries).",
+          "Plan a realistic action to fulfill each within the next week.",
+          "Track completion and note how honoring your needs supports trusting others."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Lazarus & Folkman, Stress, Appraisal, and Coping, 1984",
+          "summary": "Consistent self-care commitments increase perceived self-efficacy and relational trust."
+        }
+      }
+    ]
+  }
+}

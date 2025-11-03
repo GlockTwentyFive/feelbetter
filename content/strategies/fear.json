@@ -1,0 +1,182 @@
+{
+  "emotion_id": "fear",
+  "display_name": "Fear",
+  "affect_tone": "indigo",
+  "scientific_summary": "Fear responses calm through diaphragmatic breathing, grounding, and gradual exposure that retrains threat appraisal (Barlow, 2002).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "fear-54321",
+        "title": "5-4-3-2-1 grounding",
+        "modality": "somatic",
+        "duration_minutes": 2,
+        "instructions": [
+          "Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.",
+          "With each item, breathe slowly and label it aloud or silently.",
+          "Finish by pressing your feet into the ground and noticing your support." 
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "American Psychological Association, Anxiety Grounding Techniques, 2017",
+          "summary": "Grounding reduces acute fear by shifting attention to present-oriented sensory data." 
+        }
+      },
+      {
+        "id": "fear-coherent-breath",
+        "title": "Coherent breathing",
+        "modality": "somatic",
+        "duration_minutes": 3,
+        "instructions": [
+          "Breathe in for 6 seconds through the nose, letting the belly expand.",
+          "Exhale for 6 seconds through pursed lips, softening the jaw.",
+          "Repeat for 6 cycles while repeating 'I am safe in this moment'." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Zaccaro et al., Frontiers in Human Neuroscience, 2018",
+          "summary": "Coherent breathing increases heart-rate variability and reduces fear-driven arousal." 
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "fear-worry-window",
+        "title": "Schedule the worry",
+        "modality": "cognitive",
+        "duration_minutes": 10,
+        "instructions": [
+          "Write the feared thought in one sentence.",
+          "Schedule a 10-minute 'worry window' later today to revisit it.",
+          "Tell yourself 'Not now, I have time set aside' and redirect to a neutral task." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Borkovec et al., Behaviour Research and Therapy, 2004",
+          "summary": "Worry postponement reduces generalized fear by interrupting repetitive threat appraisal." 
+        }
+      },
+      {
+        "id": "fear-threat-reframe",
+        "title": "Threat reframe sheet",
+        "modality": "cognitive",
+        "duration_minutes": 12,
+        "instructions": [
+          "Describe the feared scenario and rate its likelihood 0–100%.",
+          "List objective evidence for and against the threat.",
+          "Write a more balanced prediction and one coping plan if it happened." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Clark & Salkovskis, Cognitive Therapy Research, 2009",
+          "summary": "Cognitive restructuring reduces fear intensity by correcting probability biases." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "fear-exposure-ladder",
+        "title": "Exposure ladder",
+        "modality": "behavioral",
+        "cadence": "weekly",
+        "duration_minutes": 30,
+        "instructions": [
+          "List five fear-provoking situations from least to most intense (SUDS scale).",
+          "Plan graded exposure starting with the least intense, repeating until anxiety drops by 50%.",
+          "Progress one rung each week, journaling coping skills used and outcomes." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Barlow, Anxiety and Its Disorders, 2002",
+          "summary": "Systematic exposure reduces fear by disconfirming catastrophic expectations." 
+        }
+      },
+      {
+        "id": "fear-mbsr-body-scan",
+        "title": "Mindful body scan",
+        "modality": "mindfulness",
+        "cadence": "daily",
+        "duration_minutes": 15,
+        "instructions": [
+          "Lie or sit comfortably and move attention sequentially from toes to head.",
+          "Notice sensations without judgment, labeling tightness, warmth, or tingling.",
+          "If fear-based thoughts arise, acknowledge and return to bodily sensations." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Kabat-Zinn, Full Catastrophe Living, 2013",
+          "summary": "Regular body scans reduce fear reactivity and improve emotion regulation in MBSR studies." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "fear-friend-anchor",
+        "title": "Anchor breath together",
+        "modality": "interpersonal",
+        "duration_minutes": 7,
+        "instructions": [
+          "Invite your friend to mirror a 4-6 breathing pace with you while making gentle eye contact or holding hands if welcomed.",
+          "Name the bodily sensations they describe (\"Your chest feels tight; let's lengthen the exhale for 6 counts\").",
+          "End by naming one thing that feels safe in the present moment."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Waters et al., Developmental Psychology, 2017",
+          "summary": "Co-regulated breathing exercises between close partners reduce physiological markers of anxiety and fear."
+        }
+      },
+      {
+        "id": "fear-friend-safety-script",
+        "title": "Use a grounding safety script",
+        "modality": "cognitive",
+        "duration_minutes": 6,
+        "instructions": [
+          "Guide your friend through the 5-4-3-2-1 senses practice to orient to the current environment.",
+          "After grounding, invite them to state one coping skill they trust.",
+          "Offer collaborative language (\"I’m here, and we can take this one step at a time together\")."
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "National Institute for Health and Care Excellence (NICE) Anxiety Disorders Guideline, 2022",
+          "summary": "Grounding and collaborative reassurance reduce acute fear responses and prevent avoidance spirals."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "fear-repair-ownership",
+        "title": "Name impact and offer restitution",
+        "modality": "communication",
+        "duration_minutes": 5,
+        "instructions": [
+          "Identify how your fearful reaction affected the other person (\"When I shut down, you felt pushed away\").",
+          "State what you are doing to steady yourself now (diaphragmatic breathing, therapist call).",
+          "Offer a specific plan to re-engage once your nervous system is calmer."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Johnson & Zuccarini, Journal of Marital and Family Therapy, 2018",
+          "summary": "Acknowledging the interpersonal impact of anxiety while committing to regulation repairs attachment security."
+        }
+      },
+      {
+        "id": "fear-repair-exposure-plan",
+        "title": "Draft a stepped exposure together",
+        "modality": "behavioral",
+        "duration_minutes": 15,
+        "instructions": [
+          "List the fearful situation that triggered the reaction and break it into 3 graded steps.",
+          "Identify what support you will request from the other person at each step (presence, check-ins).",
+          "Schedule the first manageable step within the week and set a debrief time afterward."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Craske et al., Behaviour Research and Therapy, 2014",
+          "summary": "Shared exposure planning increases adherence and reduces fear generalization."
+        }
+      }
+    ]
+  }
+}

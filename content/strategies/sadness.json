@@ -1,0 +1,182 @@
+{
+  "emotion_id": "sadness",
+  "display_name": "Sadness",
+  "affect_tone": "blue",
+  "scientific_summary": "Sadness eases through self-compassion, behavioral activation, and meaning-making practices (Beck, 1979; Neff, 2011).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "sadness-self-compassion-touch",
+        "title": "Self-compassion touch",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "Place one hand on your heart and another on your abdomen.",
+          "Breathe slowly for five cycles while silently saying, 'This is a moment of sorrow. I am not alone.'",
+          "Notice any warmth or softness that arises and allow tears if they come." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Neff & Germer, Journal of Clinical Psychology, 2013",
+          "summary": "Self-compassion gestures reduce depressive affect and increase soothing oxytocin responses." 
+        }
+      },
+      {
+        "id": "sadness-forward-fold",
+        "title": "Forward fold release",
+        "modality": "somatic",
+        "duration_seconds": 120,
+        "instructions": [
+          "Stand with feet hip-width apart, knees soft, and fold forward letting arms dangle.",
+          "Let gravity lengthen your spine; sway gently left and right for 30 seconds.",
+          "Slowly roll up vertebra by vertebra, noticing any lightness or grounding." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Streeter et al., Journal of Alternative and Complementary Medicine, 2010",
+          "summary": "Gentle forward bends increase parasympathetic activity and ease low mood." 
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "sadness-behavioral-activation",
+        "title": "Behavioral activation mini-plan",
+        "modality": "behavioral",
+        "duration_minutes": 12,
+        "instructions": [
+          "List three small activities that usually bring comfort or meaning (e.g., shower, walk, call).",
+          "Schedule one for later today and one for tomorrow with specific time and place.",
+          "After completing, rate mood shift on a 1–10 scale and note the difference." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Dimidjian et al., Journal of Consulting and Clinical Psychology, 2006",
+          "summary": "Behavioral activation effectively reduces depressive symptoms by increasing rewarding activity." 
+        }
+      },
+      {
+        "id": "sadness-meaning-letter",
+        "title": "Meaning letter to self",
+        "modality": "cognitive",
+        "duration_minutes": 10,
+        "instructions": [
+          "Write a short letter to yourself explaining why the sadness makes sense.",
+          "Include statements of validation ('Anyone in my shoes would feel…').",
+          "Close with one supportive invitation for the next 24 hours (rest, reach out, hydrate)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Pennebaker, Writing to Heal, 2004",
+          "summary": "Expressive writing helps process grief and sadness, improving mood and immune function." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "sadness-gratitude-visit",
+        "title": "Gratitude visit",
+        "modality": "relational",
+        "cadence": "monthly",
+        "duration_minutes": 30,
+        "instructions": [
+          "Write a one-page letter thanking someone who made a difference during hard times.",
+          "Read it to them in person or over video if possible.",
+          "Reflect afterward on how the interaction shifted your emotional state." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Seligman et al., American Psychologist, 2005",
+          "summary": "Gratitude visits significantly boost positive affect and decrease depressive symptoms for weeks." 
+        }
+      },
+      {
+        "id": "sadness-loss-map",
+        "title": "Loss meaning map",
+        "modality": "cognitive",
+        "cadence": "biweekly",
+        "duration_minutes": 25,
+        "instructions": [
+          "Map a recent loss or disappointment into three columns: 'What happened', 'What it changed', 'What it revealed about my values.'",
+          "For each value, list one action to honor it in the coming two weeks.",
+          "Revisit the map and update insights as the experience evolves." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Neimeyer, Meaning Reconstruction in Grief, 2001",
+          "summary": "Meaning-making interventions support adaptation to sadness and grief." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "sadness-friend-presence",
+        "title": "Offer steady presence",
+        "modality": "interpersonal",
+        "duration_minutes": 12,
+        "instructions": [
+          "Invite your friend to a quiet activity (tea, short walk) and let them set the pace of conversation.",
+          "Use empathic reflections every few sentences (\"You’re carrying a lot of heaviness today\").",
+          "Ask a gentle permission-based question before offering suggestions."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Greenberg & Pascual-Leone, Psychotherapy, 2006",
+          "summary": "Emotion-focused presence and accurate empathy reduce depressive symptoms during supportive conversations."
+        }
+      },
+      {
+        "id": "sadness-friend-activation",
+        "title": "Plan a behavioral activation micro-step",
+        "modality": "behavioral",
+        "duration_minutes": 10,
+        "instructions": [
+          "Brainstorm three activities that previously brought your friend a small lift (sunlight break, music, text check-in).",
+          "Choose the easiest one and offer to do the first minute alongside them.",
+          "Schedule a follow-up message to reinforce any shift they felt."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Dimidjian et al., Journal of Consulting and Clinical Psychology, 2014",
+          "summary": "Behavioral activation supported by peers leads to measurable improvements in mood and functioning."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "sadness-repair-checkin",
+        "title": "Name the distance and ask to reconnect",
+        "modality": "communication",
+        "duration_minutes": 6,
+        "instructions": [
+          "Share the observable behavior (\"I’ve been quiet and slow to reply\").",
+          "Name the emotional state beneath (\"I’ve been low and withdrawing\").",
+          "Request a connection ritual (short call, shared playlist) to rebuild closeness."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Reis & Shaver, Handbook of Closeness and Intimacy, 2008",
+          "summary": "Explicitly communicating attachment needs during sadness fosters repair and increases empathy."
+        }
+      },
+      {
+        "id": "sadness-repair-savoring",
+        "title": "Share a savoring reflection",
+        "modality": "cognitive",
+        "duration_minutes": 8,
+        "instructions": [
+          "Write a short message describing a moment when the other person supported you effectively.",
+          "Include sensory details and the gratitude you felt.",
+          "Invite them to repeat a similar check-in in the coming days."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Smith & Holliday, Journal of Positive Psychology, 2016",
+          "summary": "Savoring and expressed gratitude enhance relationship satisfaction and mitigate depressive symptoms."
+        }
+      }
+    ]
+  }
+}

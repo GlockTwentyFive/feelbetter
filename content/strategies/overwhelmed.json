@@ -1,0 +1,231 @@
+{
+  "emotion_id": "overwhelmed",
+  "display_name": "Overwhelmed",
+  "affect_tone": "amber",
+  "scientific_summary": "High arousal states benefit from parasympathetic activation and cognitive defusion techniques (Porges, 2011; Hayes, 2016).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "breath-446",
+        "title": "4-4-6 paced breathing",
+        "modality": "somatic",
+        "duration_seconds": 60,
+        "instructions": [
+          "Inhale gently through the nose for four counts.",
+          "Hold your breath softly for four counts without tensing.",
+          "Exhale through pursed lips for six counts, letting your shoulders drop."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Frontiers in Human Neuroscience, 2018",
+          "summary": "Extended exhalation stimulates vagal tone and lowers sympathetic arousal."
+        }
+      },
+      {
+        "id": "temperature-reset",
+        "title": "Cool water face reset",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "Splash cool water on your face or hold a cool compress to your cheeks for 30 seconds.",
+          "Focus on the temperature shift and the sensation against your skin.",
+          "Repeat up to three times while noticing your breathing slow."
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "Linehan, DBT Skills Training Manual (2014)",
+          "summary": "Temperature change activates the dive reflex, quickly reducing physiological arousal."
+        }
+      },
+      {
+        "id": "overwhelmed-grounding",
+        "title": "5-4-3-2-1 grounding",
+        "modality": "mindfulness",
+        "duration_seconds": 120,
+        "instructions": [
+          "Name five things you can see, four you can touch, three you can hear, two you can smell, one you can taste.",
+          "Keep breaths steady while moving through each sense.",
+          "Repeat the cycle once more, noticing any drop in intensity."
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "APA Stress Management Toolkit, 2020",
+          "summary": "Sensory grounding interrupts overwhelm cycles and restores present-moment focus."
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "defusion-label",
+        "title": "Name the thought distortion",
+        "modality": "cognitive",
+        "duration_minutes": 5,
+        "instructions": [
+          "Write down the loudest thought you're experiencing.",
+          "Label the distortion (e.g., catastrophizing, mind reading, all-or-nothing).",
+          "Rewrite the thought in a balanced way that fits the facts."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Journal of Consulting and Clinical Psychology, 2014",
+          "summary": "Cognitive restructuring reduces emotional intensity by reframing automatic thoughts."
+        }
+      },
+      {
+        "id": "supportive-text",
+        "title": "Send a grounding message",
+        "modality": "relational",
+        "duration_minutes": 3,
+        "instructions": [
+          "Text a trusted person one sentence describing how you're feeling.",
+          "Ask for a simple response: 'Can you remind me of one calm moment we shared?'.",
+          "Note their reply and write one gratitude sentence in your journal."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Clinical Psychological Science, 2018",
+          "summary": "Brief social support interactions buffer stress responses and increase perceived safety."
+        }
+      },
+      {
+        "id": "overwhelmed-priority-triad",
+        "title": "Priority triad",
+        "modality": "behavioral",
+        "duration_minutes": 10,
+        "instructions": [
+          "List every task on your mind; star the three that truly must happen today.",
+          "Break the first starred task into a 15-minute starter action.",
+          "Schedule or begin the starter action immediately, defer or delegate the rest." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Baumeister & Tierney, Willpower, 2011",
+          "summary": "Focusing on a small priority set reduces decision fatigue and overwhelm." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "values-journal",
+        "title": "Weekly values check-in",
+        "modality": "ACT",
+        "cadence": "weekly",
+        "duration_minutes": 10,
+        "instructions": [
+          "List three core values guiding your week (e.g., compassion, steadiness, creativity).",
+          "Write one action you took (or could take) that aligns with each value.",
+          "Note how acting on that value shifts your emotional baseline."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Behaviour Research and Therapy, 2016",
+          "summary": "Values clarification improves resilience and reduces emotional avoidance (ACT framework)."
+        }
+      },
+      {
+        "id": "sleep-winddown",
+        "title": "Sleep hygiene anchor",
+        "modality": "behavioral",
+        "cadence": "nightly",
+        "duration_minutes": 20,
+        "instructions": [
+          "Set a consistent wind-down alarm 30 minutes before bed.",
+          "Dim lights, reduce screens, and journal one calming intention for tomorrow.",
+          "Use a gentle stretch or progressive muscle relaxation to signal bedtime."
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "American Academy of Sleep Medicine, 2017",
+          "summary": "Structured wind-down routines improve sleep quality and reduce emotional volatility."
+        }
+      },
+      {
+        "id": "overwhelmed-capacity-review",
+        "title": "Capacity review",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 20,
+        "instructions": [
+          "Audit recurring commitments and rate each from 1-5 on energy cost and meaning.",
+          "Identify one commitment to pause or renegotiate this month.",
+          "Document how the freed capacity will support balance." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Maslach & Leiter, Burnout Research, 2016",
+          "summary": "Regular workload audits and boundary adjustments reduce chronic overwhelm and burnout." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "overwhelmed-friend-triad",
+        "title": "Support triad",
+        "modality": "interpersonal",
+        "duration_minutes": 8,
+        "instructions": [
+          "Ask your friend to name one feeling, one need, one step they can take.",
+          "Reflect each back to ensure they feel heard.",
+          "Offer to assist with the next step (co-working, reminder, break)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Feeney & Collins, Personality and Social Psychology Review, 2015",
+          "summary": "Responsive support that validates and collaborates lowers overwhelm and boosts resilience." 
+        }
+      },
+      {
+        "id": "overwhelmed-friend-schedule",
+        "title": "Co-schedule breathing room",
+        "modality": "behavioral",
+        "duration_minutes": 12,
+        "instructions": [
+          "Review calendars together and block shared downtime or breaks.",
+          "Set check-in reminders to ensure the downtime happens.",
+          "Celebrate keeping the appointment to reinforce the habit." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Reis & Gable, Current Opinion in Psychology, 2015",
+          "summary": "Coordinated self-care plans with partners enhance adherence and emotional outcomes." 
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "overwhelmed-repair-withdraw",
+        "title": "Repair after shutting down",
+        "modality": "communication",
+        "duration_minutes": 7,
+        "instructions": [
+          "Explain the overwhelm trigger and the withdrawal behavior (\"I went silent during our call\").",
+          "Acknowledge how it affected them and express appreciation for their patience.",
+          "Share one regulation tool you will use next time and invite their support." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Johnson & Greenman, Journal of Marital and Family Therapy, 2013",
+          "summary": "Emotionally focused repair conversations increase security after overwhelm-driven withdrawal." 
+        }
+      },
+      {
+        "id": "overwhelmed-repair-boundary",
+        "title": "Set overwhelm boundaries",
+        "modality": "behavioral",
+        "duration_minutes": 9,
+        "instructions": [
+          "Identify one frequent overwhelm trigger caused by others' expectations.",
+          "Draft a boundary statement that includes what you can offer instead.",
+          "Communicate the boundary and agree on a follow-up review date." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Thompson & Gauntlett-Gilbert, Clinical Psychology & Psychotherapy, 2018",
+          "summary": "Clear interpersonal boundaries reduce recurrent overwhelm and role overload." 
+        }
+      }
+    ]
+  }
+}

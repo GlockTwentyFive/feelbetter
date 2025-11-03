@@ -1,0 +1,231 @@
+{
+  "emotion_id": "disgust",
+  "display_name": "Disgust",
+  "affect_tone": "sage",
+  "scientific_summary": "Disgust decreases through sensory regulation, cognitive reappraisal, and exposure when appropriate (Rozin & Fallon, 1987).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "disgust-sensory-reset",
+        "title": "Sensory reset",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "Inhale a pleasant scent (citrus, mint) or sip cool water to cleanse the palate.",
+          "Rinse hands or face with warm water, noticing the change in sensation.",
+          "Exhale slowly and repeat a grounding phrase: 'This feeling will pass.'" 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Olatunji & McKay, Journal of Anxiety Disorders, 2007",
+          "summary": "Positive sensory input reduces disgust intensity by replacing aversive cues." 
+        }
+      },
+      {
+        "id": "disgust-posture-release",
+        "title": "Posture release",
+        "modality": "somatic",
+        "duration_seconds": 75,
+        "instructions": [
+          "Stand tall and roll shoulders back three times.",
+          "Open arms wide, inhale deeply, then exhale with a sigh while bringing hands to heart.",
+          "Repeat twice, focusing on expanding chest space to counter the urge to recoil." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Zhong & Liljenquist, Psychological Science, 2006",
+          "summary": "Embodied cleansing actions (open posture, washing) reduce lingering disgust reactions." 
+        }
+      },
+      {
+        "id": "disgust-urging-wave",
+        "title": "Urge surfing wave",
+        "modality": "mindfulness",
+        "duration_seconds": 120,
+        "instructions": [
+          "Notice the urge to recoil and rate it 0-10.",
+          "Breathe in for 4, out for 6 while imagining the urge rising and falling like a wave.",
+          "Track the rating every 30 seconds until it drops by at least 2 points."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Bowen et al., Mindfulness-Based Relapse Prevention, 2014",
+          "summary": "Urge surfing decreases avoidance impulses and improves disgust tolerance."
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "disgust-reappraisal",
+        "title": "Context reappraisal",
+        "modality": "cognitive",
+        "duration_minutes": 8,
+        "instructions": [
+          "Describe the triggering stimulus in factual terms, removing adjectives.",
+          "List two alternative explanations (e.g., cultural difference, protective instinct).",
+          "State one constructive next step (set boundary, seek information, clean up)." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gross, Emotion Regulation Research, 1998",
+          "summary": "Cognitive reappraisal effectively modifies disgust reactions by reframing meaning." 
+        }
+      },
+      {
+        "id": "disgust-values-check",
+        "title": "Values check",
+        "modality": "cognitive",
+        "duration_minutes": 10,
+        "instructions": [
+          "Identify which personal value felt violated (e.g., cleanliness, respect).",
+          "Write one sentence on how you can honor that value healthily (clean, communicate, exit).",
+          "Commit to the aligned action within 24 hours." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Haidt, The Moral Emotions, 2003",
+          "summary": "Disgust often signals moral violation; addressing the value reduces emotional residue." 
+        }
+      },
+      {
+        "id": "disgust-action-plan",
+        "title": "Protective action plan",
+        "modality": "behavioral",
+        "duration_minutes": 12,
+        "instructions": [
+          "List three practical steps to restore cleanliness or safety (sanitize, ventilate, reorganize).",
+          "Assign each step a time estimate and required tools.",
+          "Begin the quickest step immediately to regain agency."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Curtis et al., Philosophical Transactions of the Royal Society B, 2011",
+          "summary": "Goal-directed cleansing behaviors reduce disgust intensity and perceived contamination."
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "disgust-exposure-hierarchy",
+        "title": "Gradual exposure hierarchy",
+        "modality": "behavioral",
+        "cadence": "weekly",
+        "duration_minutes": 25,
+        "instructions": [
+          "Rank related stimuli from least to most disgusting.",
+          "Begin exposure with the least intense cue (e.g., images) while practicing slow breathing.",
+          "Progress up the hierarchy as tolerance increases, noting mastery after each step." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Rozin & Fallon, Journal of Abnormal Psychology, 1987",
+          "summary": "Exposure therapy desensitizes disgust reactions by repeated non-harmful contact." 
+        }
+      },
+      {
+        "id": "disgust-compassion-cultivation",
+        "title": "Compassion cultivation",
+        "modality": "mindfulness",
+        "cadence": "twice-weekly",
+        "duration_minutes": 15,
+        "instructions": [
+          "Visualize someone who elicited disgust and imagine them as a vulnerable child.",
+          "Offer phrases of compassion ('May you be free from suffering').",
+          "Shift attention to your own reaction, offering the same compassion to yourself." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Hofmann et al., Clinical Psychology Review, 2011",
+          "summary": "Compassion meditation reduces disgust and increases prosocial responding." 
+        }
+      },
+      {
+        "id": "disgust-cultural-literacy",
+        "title": "Cultural literacy practice",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 30,
+        "instructions": [
+          "Pick a cultural practice or cuisine that previously triggered disgust.",
+          "Research its history and meaning, noting at least three positive intentions behind it.",
+          "Share one learning with a friend or journal about how understanding shifted your reaction."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Koleva et al., Journal of Personality and Social Psychology, 2012",
+          "summary": "Perspective-taking and cultural knowledge reduce moralized disgust responses."
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "disgust-friend-normalize",
+        "title": "Normalize the reaction, not the trigger",
+        "modality": "communication",
+        "duration_minutes": 6,
+        "instructions": [
+          "Acknowledge your friend's feeling without judgment (\"Anyone could feel thrown by that smell\").",
+          "Invite them to identify the value underneath the reaction (health, respect).",
+          "Offer to help with one concrete clean-up or boundary-setting action."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Seah et al., Emotion, 2020",
+          "summary": "Validation paired with value clarification reduces interpersonal disgust contagion."
+        }
+      },
+      {
+        "id": "disgust-friend-exposure-partner",
+        "title": "Exposure partner check-in",
+        "modality": "behavioral",
+        "duration_minutes": 10,
+        "instructions": [
+          "Help your friend rank triggers and choose an easy first exposure to do together (photos, descriptions).",
+          "Guide them through slow breathing during the exposure and rate discomfort every minute.",
+          "Celebrate progress and log ideas for the next step."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Deacon & Olatunji, Clinical Psychology Review, 2007",
+          "summary": "Supported exposure reduces disgust sensitivity more effectively than solo practice."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "disgust-repair-expression",
+        "title": "Repair after expressing disgust",
+        "modality": "communication",
+        "duration_minutes": 7,
+        "instructions": [
+          "Name the behavior without shaming the person (\"I wrinkled my nose when you served that dish\").",
+          "Explain the automatic reaction and affirm the relationship value (curiosity, respect).",
+          "Offer to learn more or try a small portion to show willingness to reconnect."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Chapman & Anderson, Review of General Psychology, 2014",
+          "summary": "Repairing disgust expressions with empathy maintains closeness and reduces offense."
+        }
+      },
+      {
+        "id": "disgust-repair-boundary",
+        "title": "Set a respectful boundary",
+        "modality": "behavioral",
+        "duration_minutes": 8,
+        "instructions": [
+          "Clarify what specific cue you need to limit (texture, environment).",
+          "Propose an alternative that honors both needs (different utensil, ventilation, location).",
+          "Confirm follow-up to revisit how the arrangement is working."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Tybur et al., Emotion Review, 2013",
+          "summary": "Boundaries that respect pathogen concerns while protecting social bonds reduce recurring disgust conflicts."
+        }
+      }
+    ]
+  }
+}

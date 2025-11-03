@@ -1,0 +1,184 @@
+{
+  "emotion_id": "anger",
+  "display_name": "Anger",
+  "affect_tone": "crimson",
+  "scientific_summary": "Anger subsides with physiological cooling, cognitive reappraisal, and assertive communication skills (Novaco, 2011).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "anger-cold-hold",
+        "title": "Cold hold reset",
+        "modality": "somatic",
+        "duration_seconds": 120,
+        "instructions": [
+          "Hold a cool pack or rinse wrists under cold water for 30 seconds.",
+          "While cooling, breathe in for 4 counts and out for 6 counts.",
+          "Repeat three times, lowering shoulders each cycle." 
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "Linehan, DBT Skills Training Manual, 2014",
+          "summary": "Temperature shifts activate the dive reflex and quickly reduce anger-driven arousal." 
+        }
+      },
+      {
+        "id": "anger-box-breath",
+        "title": "Box breathing",
+        "modality": "somatic",
+        "duration_seconds": 120,
+        "instructions": [
+          "Inhale through the nose for 4 counts.",
+          "Hold lungs full for 4 counts, softening the jaw.",
+          "Exhale for 4 counts, hold empty for 4, and repeat for 6 cycles." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Seppälä et al., Frontiers in Psychology, 2014",
+          "summary": "Box breathing lowers sympathetic arousal and improves emotion regulation." 
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "anger-thought-log",
+        "title": "Anger thought log",
+        "modality": "cognitive",
+        "duration_minutes": 10,
+        "instructions": [
+          "Write the triggering event and the automatic thought ('They never listen').",
+          "Identify the need or value underneath (respect, fairness).",
+          "Draft a balanced statement that acknowledges both feelings and facts." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Beck, Cognitive Therapy of Anger, 1999",
+          "summary": "Cognitive restructuring reduces anger intensity by challenging distorted appraisals." 
+        }
+      },
+      {
+        "id": "anger-assertive-script",
+        "title": "Assertive communication script",
+        "modality": "behavioral",
+        "duration_minutes": 8,
+        "instructions": [
+          "Use the 'I feel… when… because… I need…' format to script your message.",
+          "Practice saying it aloud with a calm tone.",
+          "Plan the best time to deliver it when emotions have cooled." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Epstein & Baucom, Cognitive-Behavioral Couples Therapy, 2002",
+          "summary": "Assertive expression decreases anger recurrence and improves conflict outcomes." 
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "anger-regular-exercise",
+        "title": "Regular cardiovascular routine",
+        "modality": "behavioral",
+        "cadence": "3x weekly",
+        "duration_minutes": 30,
+        "instructions": [
+          "Schedule moderate aerobic activity (walk, cycle) three times weekly.",
+          "During movement, focus on exhalations and releasing tension.",
+          "Track mood before and after to notice reductions in baseline anger." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Lox et al., Psychology of Physical Activity, 2014",
+          "summary": "Regular aerobic exercise lowers anger and hostility markers over time." 
+        }
+      },
+      {
+        "id": "anger-compassion-practice",
+        "title": "Loving-kindness practice",
+        "modality": "mindfulness",
+        "cadence": "daily",
+        "duration_minutes": 15,
+        "instructions": [
+          "Sit comfortably and repeat phrases of goodwill for yourself ('May I be safe, calm').",
+          "Extend the phrases to someone neutral, then to the person who sparked anger when ready.",
+          "End by acknowledging your own need for safety and respect." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Hutcherson et al., Emotion, 2008",
+          "summary": "Loving-kindness meditation increases positive regard and reduces anger and implicit bias." 
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "anger-friend-listening" ,
+        "title": "Co-regulate through active listening",
+        "modality": "interpersonal",
+        "duration_minutes": 10,
+        "instructions": [
+          "Sit or stand at eye level with your friend and keep your posture relaxed.",
+          "Reflect back the core feeling you hear (\"It sounds like you felt dismissed when that happened\").",
+          "Validate their experience without problem-solving until they confirm they feel understood."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Kouros et al., Journal of Family Psychology, 2021",
+          "summary": "Accurate emotional validation from close others reduces anger persistence and supports physiological regulation."
+        }
+      },
+      {
+        "id": "anger-friend-cooling-plan",
+        "title": "Create a two-step cooling plan together",
+        "modality": "behavioral",
+        "duration_minutes": 8,
+        "instructions": [
+          "Ask your friend which body-based reset helps (walk, cold water, paced breath) and agree to do it alongside them.",
+          "Schedule a check-in after 20 minutes to debrief once arousal has dropped.",
+          "End by summarizing the shared next step to prevent the trigger again."
+        ],
+        "evidence": {
+          "type": "clinical-guideline",
+          "source": "American Psychological Association Anger Management Guidelines, 2020",
+          "summary": "Collaborative coping plans lower relapse of anger episodes and increase perceptions of support."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "anger-repair-apology-map",
+        "title": "Use the 4-part repair script",
+        "modality": "communication",
+        "duration_minutes": 6,
+        "instructions": [
+          "Name the behavior without excuses (\"I raised my voice and interrupted you\").",
+          "Acknowledge the impact on them (\"That left you feeling disrespected\").",
+          "State the regulation skill you will use next time (paced breathing before responding).",
+          "Invite feedback and agree on a follow-up check-in within 24 hours."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Finkel et al., Journal of Personality and Social Psychology, 2014",
+          "summary": "Structured apologies that include impact acknowledgment and concrete repair steps improve forgiveness and relationship satisfaction."
+        }
+      },
+      {
+        "id": "anger-self-reflection-grid",
+        "title": "Run a trigger reflection grid",
+        "modality": "cognitive",
+        "duration_minutes": 12,
+        "instructions": [
+          "Draw a 2x2 grid and label rows 'What I Felt' and 'What I Needed'.",
+          "Label columns 'Before I reacted' and 'After I reacted'.",
+          "Fill the boxes, then identify one boundary or request that would meet the unmet need without escalation.",
+          "Share the request with the other person once both of you are calm."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Navarro-Haro et al., Behaviour Research and Therapy, 2018",
+          "summary": "Structured cognitive reviews reduce anger rumination and support adaptive boundary-setting."
+        }
+      }
+    ]
+  }
+}

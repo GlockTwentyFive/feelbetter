@@ -1,0 +1,98 @@
+[
+  {
+    "emotion_id": "joy",
+    "primary_label": "Joy",
+    "synonyms": ["delight", "happiness", "contentment"],
+    "plutchik_intensity": {
+      "weaker": "serenity",
+      "stronger": "ecstasy"
+    },
+    "valence": "pleasant",
+    "activation": "high",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "trust",
+    "primary_label": "Trust",
+    "synonyms": ["acceptance", "confidence", "safety"],
+    "plutchik_intensity": {
+      "weaker": "acceptance",
+      "stronger": "admiration"
+    },
+    "valence": "pleasant",
+    "activation": "moderate",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "fear",
+    "primary_label": "Fear",
+    "synonyms": ["anxiety", "worry", "nervousness"],
+    "plutchik_intensity": {
+      "weaker": "apprehension",
+      "stronger": "terror"
+    },
+    "valence": "unpleasant",
+    "activation": "high",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "surprise",
+    "primary_label": "Surprise",
+    "synonyms": ["startle", "amazement", "curiosity"],
+    "plutchik_intensity": {
+      "weaker": "distraction",
+      "stronger": "amazement"
+    },
+    "valence": "neutral",
+    "activation": "high",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "sadness",
+    "primary_label": "Sadness",
+    "synonyms": ["sorrow", "grief", "loneliness"],
+    "plutchik_intensity": {
+      "weaker": "pensiveness",
+      "stronger": "grief"
+    },
+    "valence": "unpleasant",
+    "activation": "low",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "disgust",
+    "primary_label": "Disgust",
+    "synonyms": ["revulsion", "contempt", "aversion"],
+    "plutchik_intensity": {
+      "weaker": "boredom",
+      "stronger": "loathing"
+    },
+    "valence": "unpleasant",
+    "activation": "moderate",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "anger",
+    "primary_label": "Anger",
+    "synonyms": ["frustration", "irritation", "rage"],
+    "plutchik_intensity": {
+      "weaker": "annoyance",
+      "stronger": "rage"
+    },
+    "valence": "unpleasant",
+    "activation": "high",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  },
+  {
+    "emotion_id": "anticipation",
+    "primary_label": "Anticipation",
+    "synonyms": ["interest", "eagerness", "vigilance"],
+    "plutchik_intensity": {
+      "weaker": "interest",
+      "stronger": "vigilance"
+    },
+    "valence": "neutral",
+    "activation": "moderate",
+    "source": "Plutchik, R. (2001). The nature of emotions."
+  }
+]

@@ -1,0 +1,231 @@
+{
+  "emotion_id": "anticipation",
+  "display_name": "Anticipation",
+  "affect_tone": "orange",
+  "scientific_summary": "Anticipation can fuel motivation when channelled through planning, mindfulness, and reality-based preparation (Carver & Scheier, 1998).",
+  "strategies": {
+    "immediate": [
+      {
+        "id": "anticipation-scan",
+        "title": "Body readiness scan",
+        "modality": "somatic",
+        "duration_seconds": 90,
+        "instructions": [
+          "Stand or sit tall and breathe in for four counts, out for six.",
+          "Scan from head to toe, noting areas of tension or eagerness.",
+          "On each exhale, soften the tight spots to balance excitement with steadiness." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gross, Emotion Regulation, 2015",
+          "summary": "Somatic awareness helps modulate arousal and supports balanced anticipation." 
+        }
+      },
+      {
+        "id": "anticipation-clarity-question",
+        "title": "Clarity question",
+        "modality": "cognitive",
+        "duration_minutes": 2,
+        "instructions": [
+          "Ask yourself: 'What am I most looking forward to, and why does it matter?'.",
+          "Write a single sentence capturing the opportunity ahead.",
+          "Repeat the sentence as a grounding affirmation." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Carver & Scheier, On the Self-Regulation of Behavior, 1998",
+          "summary": "Clarifying motives aligns anticipatory energy with goal pursuit." 
+        }
+      },
+      {
+        "id": "anticipation-vagal-reset",
+        "title": "Vagal reset sip",
+        "modality": "somatic",
+        "duration_seconds": 75,
+        "instructions": [
+          "Take a slow sip of cool water while exhaling for six counts.",
+          "After swallowing, hum softly for 10 seconds to stimulate the vagus nerve.",
+          "Repeat twice while dropping your shoulders with each exhale."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Porges, Psychophysiology, 2011",
+          "summary": "Brief vagal toning exercises modulate anticipatory arousal and support social engagement."
+        }
+      }
+    ],
+    "short_term": [
+      {
+        "id": "anticipation-ifthen-plan",
+        "title": "If-then planning",
+        "modality": "cognitive",
+        "duration_minutes": 10,
+        "instructions": [
+          "Identify one desired outcome and one potential obstacle.",
+          "Create an if-then plan (e.g., 'If I feel overwhelm before presenting, then I will do 4-4-6 breathing').",
+          "Write the plan on a card or phone note to revisit before the event." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Gollwitzer & Sheeran, American Psychologist, 2006",
+          "summary": "Implementation intentions improve goal attainment by pre-deciding responses." 
+        }
+      },
+      {
+        "id": "anticipation-visualize-success",
+        "title": "Process visualization",
+        "modality": "cognitive",
+        "duration_minutes": 8,
+        "instructions": [
+          "Close your eyes and imagine yourself moving through the upcoming event step by step.",
+          "Focus on process actions (breathing, speaking, posture) rather than outcome.",
+          "End by picturing the post-event reflection and one lesson learned." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Taylor & Pham, Journal of Personality and Social Psychology, 1998",
+          "summary": "Process-focused visualization improves performance and manages anticipatory stress." 
+        }
+      },
+      {
+        "id": "anticipation-focus-intervals",
+        "title": "Focus interval rehearsal",
+        "modality": "behavioral",
+        "duration_minutes": 12,
+        "instructions": [
+          "Break the upcoming event into 3 timed intervals (opening, middle, close).",
+          "For each interval, jot the key objective and one grounding cue (breath, keyword).",
+          "Practice walking through the intervals aloud or with a supportive peer."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Moran, International Review of Sport and Exercise Psychology, 2016",
+          "summary": "Segmented mental rehearsal improves performance under anticipatory stress."
+        }
+      }
+    ],
+    "long_term": [
+      {
+        "id": "anticipation-progress-journal",
+        "title": "Progress journal",
+        "modality": "cognitive",
+        "cadence": "weekly",
+        "duration_minutes": 15,
+        "instructions": [
+          "Each week, record one event you anticipated and note what went well, what was challenging, and what you learned.",
+          "Highlight one strength you used during the experience.",
+          "Identify a micro-adjustment for the next anticipated event." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Grant & Dweck, Motivation and Emotion, 2003",
+          "summary": "Reflective journaling enhances growth mindsets and adaptive anticipation." 
+        }
+      },
+      {
+        "id": "anticipation-strength-building",
+        "title": "Strength-building practice",
+        "modality": "behavioral",
+        "cadence": "biweekly",
+        "duration_minutes": 20,
+        "instructions": [
+          "Choose one skill that supports your anticipated goals (e.g., presentation, empathy).",
+          "Schedule a practice session or training every two weeks.",
+          "After each practice, log one takeaway and how it lowers future anxiety." 
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Bandura, Self-Efficacy Research, 1997",
+          "summary": "Skill rehearsal increases self-efficacy, channeling anticipatory arousal into confidence." 
+        }
+      },
+      {
+        "id": "anticipation-implementation-review",
+        "title": "Monthly implementation review",
+        "modality": "cognitive",
+        "cadence": "monthly",
+        "duration_minutes": 20,
+        "instructions": [
+          "List anticipated events from the past month and rate preparation confidence vs. outcome.",
+          "Note which preparation behaviors correlated with calmer performance.",
+          "Select one behavior to amplify for next month and schedule it on the calendar."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Duckworth et al., Journal of Personality and Social Psychology, 2011",
+          "summary": "Regular implementation reviews strengthen grit and effective anticipation strategies."
+        }
+      }
+    ]
+  },
+  "relationship_support": {
+    "friend_support": [
+      {
+        "id": "anticipation-friend-celebrate-plan",
+        "title": "Co-create a celebration plan",
+        "modality": "interpersonal",
+        "duration_minutes": 10,
+        "instructions": [
+          "Ask your friend what outcome they hope to savor after the event.",
+          "Design a small celebratory ritual you can share (voice memo, walk, favorite snack).",
+          "Schedule the ritual on both calendars to reinforce motivation and reduce performance pressure."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Roepke et al., Journal of Positive Psychology, 2018",
+          "summary": "Planning shared savoring experiences increases anticipatory joy and buffers stress."
+        }
+      },
+      {
+        "id": "anticipation-friend-reality-check",
+        "title": "Reality-check conversation",
+        "modality": "communication",
+        "duration_minutes": 8,
+        "instructions": [
+          "Invite your friend to list their top two hopes and two realistic constraints.",
+          "Reflect back balanced statements that honor both excitement and limits.",
+          "Agree on one practical step they can take this week to feel prepared."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Nadeau et al., Cognitive Therapy and Research, 2019",
+          "summary": "Supportive cognitive reframing with peers reduces anticipatory anxiety and improves planning accuracy."
+        }
+      }
+    ],
+    "self_repair": [
+      {
+        "id": "anticipation-repair-overpromise",
+        "title": "Repair when I overpromised",
+        "modality": "communication",
+        "duration_minutes": 7,
+        "instructions": [
+          "State the commitment you made in anticipation (\"I said I'd deliver by Monday\").",
+          "Explain the updated realistic timeline and what you are doing to meet it.",
+          "Offer a make-good option (partial draft, progress update) and invite feedback."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Lewicki & Polin, Organizational Behavior and Human Decision Processes, 2013",
+          "summary": "Transparent renegotiation with a concrete plan rebuilds trust after unmet expectations."
+        }
+      },
+      {
+        "id": "anticipation-repair-anxiety-spread",
+        "title": "Contain my anticipatory anxiety",
+        "modality": "cognitive",
+        "duration_minutes": 9,
+        "instructions": [
+          "Write how your own anxious anticipation affected the other person (e.g., constant checking in).",
+          "Identify one boundary you can set for yourself (scheduled updates instead of frequent messages).",
+          "Share the boundary and ask what would help them feel supported while you prepare."
+        ],
+        "evidence": {
+          "type": "peer-reviewed",
+          "source": "Bodie et al., Communication Quarterly, 2015",
+          "summary": "Meta-communication about anxiety maintains relationship satisfaction during high-stakes preparation."
+        }
+      }
+    ]
+  }
+}
