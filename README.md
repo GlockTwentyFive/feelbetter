@@ -60,10 +60,6 @@ Feel Better ships with the following theme families:
 
 Each theme defines colour tokens for surface backgrounds, typography, elevation, and emotion-specific accents. Components consume these tokens exclusively through the `FeelBetterTheme` extension to ensure consistency and smooth runtime switching.
 
-## Screenshots
-
-> _Add screenshots or animated GIFs here once captures are available._
-
 ## Prerequisites
 
 - Flutter SDK >= 3.35.0 (stable channel recommended)
@@ -89,10 +85,6 @@ flutter run -d windows     # Windows desktop
 flutter run -d linux       # Linux desktop
 ```
 
-### Environment variables
-
-No secret keys are required for the default build. If you extend the app with networked services, create a `.env` file and load it via your chosen configuration approach.
-
 ## Development scripts
 
 ```bash
@@ -105,11 +97,15 @@ flutter pub run flutter_launcher_icons # rebuilds platform launcher icons
 
 ## Testing
 
+Run all tests:
 ```bash
 flutter test
 ```
+Automated tests ensure the app’s functionality and stability.
+- Unit & Widget Tests: Validate logic and UI behavior.
+- Integration Tests: Check end-to-end user flows.
 
-Add widget and integration tests as you grow the feature set. Prioritise coverage for emotion logging flows, quick strategy actions, and journal persistence.
+All tests are located in the /test directory.
 
 ## Contributing
 
