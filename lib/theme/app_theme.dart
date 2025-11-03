@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // ---------------------------------------------------------------------------
 // Theme token model
@@ -240,25 +239,22 @@ class AppTheme {
       scrim: tokens.shadowColor.withValues(alpha: tokens.isDark ? 0.8 : 0.4),
     );
 
-    final headlineFont = GoogleFonts.playfairDisplay;
-    final bodyFont = GoogleFonts.workSans;
-
-    final textTheme = TextTheme(
-      displayLarge: headlineFont(textStyle: const TextStyle(fontSize: 56, fontWeight: FontWeight.w600)),
-      displayMedium: headlineFont(textStyle: const TextStyle(fontSize: 48, fontWeight: FontWeight.w600)),
-      displaySmall: headlineFont(textStyle: const TextStyle(fontSize: 38, fontWeight: FontWeight.w600)),
-      headlineLarge: headlineFont(textStyle: const TextStyle(fontSize: 34, fontWeight: FontWeight.w600)),
-      headlineMedium: headlineFont(textStyle: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600)),
-      headlineSmall: headlineFont(textStyle: const TextStyle(fontSize: 26, fontWeight: FontWeight.w600)),
-      titleLarge: headlineFont(textStyle: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600)),
-      titleMedium: headlineFont(textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-      titleSmall: headlineFont(textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-      bodyLarge: bodyFont(textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500, height: 1.48)),
-      bodyMedium: bodyFont(textStyle: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w500, height: 1.48)),
-      bodySmall: bodyFont(textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 1.46)),
-      labelLarge: bodyFont(textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: 0.2)),
-      labelMedium: bodyFont(textStyle: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, letterSpacing: 0.3)),
-      labelSmall: bodyFont(textStyle: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, letterSpacing: 0.4)),
+    final textTheme = const TextTheme(
+      displayLarge: TextStyle(fontSize: 56, fontWeight: FontWeight.w600),
+      displayMedium: TextStyle(fontSize: 48, fontWeight: FontWeight.w600),
+      displaySmall: TextStyle(fontSize: 38, fontWeight: FontWeight.w600),
+      headlineLarge: TextStyle(fontSize: 34, fontWeight: FontWeight.w600),
+      headlineMedium: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+      headlineSmall: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+      titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+      titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      titleSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+      bodyLarge: TextStyle(fontSize: 17, fontWeight: FontWeight.w500, height: 1.48),
+      bodyMedium: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w500, height: 1.48),
+      bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 1.46),
+      labelLarge: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: 0.2),
+      labelMedium: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, letterSpacing: 0.3),
+      labelSmall: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, letterSpacing: 0.4),
     ).apply(
       displayColor: tokens.textPrimary,
       bodyColor: tokens.textPrimary,
@@ -273,6 +269,7 @@ class AppTheme {
       scaffoldBackgroundColor: tokens.backgroundPrimary,
       canvasColor: tokens.backgroundPrimary,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      fontFamily: 'Satoshi',
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: ZoomPageTransitionsBuilder(),
