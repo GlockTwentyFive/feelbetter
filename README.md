@@ -22,8 +22,9 @@ Feel Better is a cross-platform emotional repair toolkit built with Flutter. It 
 
 ## Features
 
-- **Minimal, responsive calm home** – Compact quick-action hero that works beautifully on phones, tablets, and desktops.
-- **Evidence-rich strategy library** – Emotion pages surface immediate, short-term, long-term, relationship-support, and self-repair plans with source badges.
+- **Minimal, responsive calm home** – Compact quick-action hero that now gracefully scales below 380 logical pixels with tuned typography, spacing, and card sizing.
+- **Evidence-rich strategy planner** – Personal care chips let you flip between immediate, short-term, and long-term actions, while Support Network tabs collect relationship support and repair strategies.
+- **Polished compact menus** – Icon-first overflow menus keep quick actions legible and harmonious on small Android devices.
 - **Guided breathwork** – Built-in Breathe view provides quick parasympathetic resets.
 - **Journaling & history** – Capture reflections, review past logs, and maintain streaks that reinforce positive habits.
 - **Analytics dashboard** – Visualise emotion trends to identify triggers and patterns over time.
@@ -60,9 +61,16 @@ Feel Better ships with the following theme families:
 
 Each theme defines colour tokens for surface backgrounds, typography, elevation, and emotion-specific accents. Components consume these tokens exclusively through the `FeelBetterTheme` extension to ensure consistency and smooth runtime switching.
 
+## Responsive layout highlights
+
+- Calm Home hero cards, buttons, and quick actions compress elegantly on ultra-compact devices.
+- Manage Emotions tiles use refined padding, smaller type ramps, and iconised menus to prevent overflow.
+- Manage Strategies view separates "My care plan" and "Support network" flows, with reorderable lists and tabbed relationship guidance.
+- Overflow menus across the app adopt rounded shapes, contextual icons, and consistent spacing for an aesthetically calm experience.
+
 ## Screenshots
 
-> _Add screenshots or animated GIFs here once captures are available._
+> _Add refreshed screenshots or animated GIFs showcasing compact and desktop breakpoints._
 
 ## Prerequisites
 
