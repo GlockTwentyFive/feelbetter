@@ -290,9 +290,11 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = AppTheme.tokens(context);
+    final width = MediaQuery.of(context).size.width;
+    final isCompact = width < 360;
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+        padding: EdgeInsets.symmetric(horizontal: isCompact ? 20 : 32),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -350,6 +352,7 @@ class _EmotionGridView extends StatelessWidget {
         final itemWidth = crossAxisCount > 0 ? (availableWidth - totalSpacing) / crossAxisCount : availableWidth;
         final isCompact = itemWidth < 220;
         final isUltraCompact = itemWidth < 160;
+        final isSuperCompact = itemWidth < 150;
         final childAspectRatio = isUltraCompact
             ? 1.28
             : isCompact
@@ -374,6 +377,7 @@ class _EmotionGridView extends StatelessWidget {
               tokens: tokens,
               textTheme: textTheme,
               isCompact: isUltraCompact || isCompact,
+              isSuperCompact: isSuperCompact,
               onTap: () => onTap(emotion),
               onEdit: () => onEdit(emotion),
               onDelete: () => onDelete(emotion),
@@ -392,6 +396,7 @@ class _EmotionTile extends StatelessWidget {
     required this.tokens,
     required this.textTheme,
     required this.isCompact,
+    required this.isSuperCompact,
     required this.onTap,
     required this.onEdit,
     required this.onDelete,
@@ -402,6 +407,7 @@ class _EmotionTile extends StatelessWidget {
   final FeelBetterTheme tokens;
   final TextTheme textTheme;
   final bool isCompact;
+  final bool isSuperCompact;
   final VoidCallback onTap;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
@@ -412,11 +418,16 @@ class _EmotionTile extends StatelessWidget {
 
     final baseColor = tokens.backgroundSecondary;
     final borderColor = tokens.borderSecondary.withValues(alpha: 0.32);
-    final borderRadius = BorderRadius.circular(isCompact ? 20 : 28);
-    final tilePadding = EdgeInsets.fromLTRB(18, isCompact ? 18 : 22, 18, isCompact ? 20 : 24);
-    final iconSize = isCompact ? 34.0 : 42.0;
-    final spacingAfterHeader = isCompact ? 12.0 : 16.0;
-    final spacingAfterTitle = isCompact ? 6.0 : 8.0;
+    final borderRadius = BorderRadius.circular(isSuperCompact ? 18 : (isCompact ? 22 : 28));
+    final tilePadding = EdgeInsets.fromLTRB(
+      isSuperCompact ? 14 : 18,
+      isSuperCompact ? 14 : (isCompact ? 18 : 22),
+      isSuperCompact ? 14 : 18,
+      isSuperCompact ? 16 : (isCompact ? 20 : 24),
+    );
+    final iconSize = isSuperCompact ? 30.0 : (isCompact ? 36.0 : 42.0);
+    final spacingAfterHeader = isSuperCompact ? 8.0 : (isCompact ? 12.0 : 16.0);
+    final spacingAfterTitle = isSuperCompact ? 4.0 : (isCompact ? 6.0 : 8.0);
 
     return Material(
       color: Colors.transparent,
@@ -447,6 +458,17 @@ class _EmotionTile extends StatelessWidget {
                 children: [
                   EmotionIcon(icon: Icons.auto_awesome_rounded, paletteKey: paletteKey, size: iconSize),
                   PopupMenuButton<String>(
+                    tooltip: 'Tile options',
+                    position: PopupMenuPosition.under,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    splashRadius: isSuperCompact ? 18 : 22,
+                    icon: Icon(
+                      Icons.more_horiz,
+                      color: tokens.textSecondary.withValues(alpha: 0.8),
+                      size: isSuperCompact ? 20 : 22,
+                    ),
                     onSelected: (value) {
                       switch (value) {
                         case 'edit':
@@ -457,11 +479,25 @@ class _EmotionTile extends StatelessWidget {
                           break;
                       }
                     },
-                    itemBuilder: (context) => const [
-                      PopupMenuItem(value: 'edit', child: Text('Edit emotion')),
-                      PopupMenuItem(value: 'delete', child: Text('Remove emotion')),
-                    ],
-                    icon: Icon(Icons.more_horiz, color: tokens.textSecondary.withValues(alpha: 0.8)),
+                    itemBuilder: (context) {
+                      PopupMenuItem<String> buildItem({required String value, required IconData icon, required String label}) {
+                        return PopupMenuItem<String>(
+                          value: value,
+                          child: Row(
+                            children: [
+                              Icon(icon, size: 18, color: tokens.textSecondary),
+                              const SizedBox(width: 10),
+                              Text(label),
+                            ],
+                          ),
+                        );
+                      }
+
+                      return [
+                        buildItem(value: 'edit', icon: Icons.edit_outlined, label: 'Edit emotion'),
+                        buildItem(value: 'delete', icon: Icons.delete_outline, label: 'Remove emotion'),
+                      ];
+                    },
                   ),
                 ],
               ),
@@ -471,18 +507,18 @@ class _EmotionTile extends StatelessWidget {
                 style: textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                   color: tokens.textPrimary,
-                  fontSize: isCompact ? 16 : null,
+                  fontSize: isSuperCompact ? 15 : (isCompact ? 16 : null),
                 ),
               ),
               SizedBox(height: spacingAfterTitle),
               Text(
                 synonyms,
-                maxLines: 3,
+                maxLines: isSuperCompact ? 4 : 3,
                 overflow: TextOverflow.ellipsis,
                 style: textTheme.bodySmall?.copyWith(
                   color: tokens.textSecondary,
                   height: 1.4,
-                  fontSize: isCompact ? 12 : null,
+                  fontSize: isSuperCompact ? 11 : (isCompact ? 12 : null),
                 ),
               ),
             ],

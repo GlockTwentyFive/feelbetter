@@ -394,7 +394,11 @@ class _FeelBetterAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: isCompact
           ? [
               PopupMenuButton<_CompactAction>(
+                tooltip: 'More actions',
                 icon: const Icon(Icons.more_vert_rounded),
+                position: PopupMenuPosition.under,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                offset: const Offset(0, 6),
                 onSelected: (value) {
                   switch (value) {
                     case _CompactAction.journal:
@@ -417,30 +421,48 @@ class _FeelBetterAppBar extends StatelessWidget implements PreferredSizeWidget {
                       break;
                   }
                 },
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: _CompactAction.journal,
-                    child: const Text('Journal'),
-                  ),
-                  PopupMenuItem(
-                    value: _CompactAction.manageEmotions,
-                    child: const Text('Explore feelings'),
-                  ),
-                  PopupMenuItem(
-                    value: _CompactAction.emotionTrends,
-                    child: const Text('View patterns'),
-                  ),
-                  const PopupMenuDivider(),
-                  PopupMenuItem(
-                    value: _CompactAction.donate,
-                    child: const Text('Donate'),
-                  ),
-                  PopupMenuItem(
-                    value: _CompactAction.streak,
-                    enabled: appState.streak > 0,
-                    child: Text('Streak: ${appState.streak}'),
-                  ),
-                ],
+                itemBuilder: (context) {
+                  PopupMenuItem<_CompactAction> buildItem({
+                    required _CompactAction action,
+                    required IconData icon,
+                    required String label,
+                    bool enabled = true,
+                  }) {
+                    final colorScheme = Theme.of(context).colorScheme;
+                    return PopupMenuItem<_CompactAction>(
+                      value: action,
+                      enabled: enabled,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(icon, size: 20, color: enabled ? colorScheme.secondary : colorScheme.onSurfaceVariant.withValues(alpha: 0.4)),
+                          const SizedBox(width: 12),
+                          Flexible(
+                            child: Text(
+                              label,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return [
+                    buildItem(action: _CompactAction.journal, icon: Icons.menu_book_outlined, label: 'Journal'),
+                    buildItem(action: _CompactAction.manageEmotions, icon: Icons.grid_view_rounded, label: 'Explore feelings'),
+                    buildItem(action: _CompactAction.emotionTrends, icon: Icons.timeline_rounded, label: 'View patterns'),
+                    const PopupMenuDivider(),
+                    buildItem(action: _CompactAction.donate, icon: Icons.favorite_rounded, label: 'Donate'),
+                    buildItem(
+                      action: _CompactAction.streak,
+                      icon: Icons.local_fire_department_rounded,
+                      label: 'Streak: ${appState.streak}',
+                      enabled: appState.streak > 0,
+                    ),
+                  ];
+                },
               ),
             ]
           : [

@@ -18,37 +18,42 @@ class CalmHomeView extends StatelessWidget {
             bottom: false,
             child: LayoutBuilder(
               builder: (context, constraints) {
+                final viewPadding = MediaQuery.of(context).padding;
                 final maxWidth = constraints.maxWidth;
                 final isCompact = maxWidth < 720;
                 final isTablet = maxWidth >= 720 && maxWidth < 1100;
                 final isWide = maxWidth >= 1100;
+                final isSuperCompact = maxWidth < 380;
                 final horizontal = isCompact
-                    ? 20.0
+                    ? (isSuperCompact ? 16.0 : 20.0)
                     : isTablet
                         ? 48.0
                         : 104.0;
                 final vertical = isCompact
-                    ? 40.0
+                    ? (isSuperCompact ? 28.0 : 36.0)
                     : isTablet
-                        ? 72.0
+                        ? 68.0
                         : 92.0;
                 final contentMaxWidth = isWide ? 1200.0 : 880.0;
-                final bottomInset = isCompact ? 140.0 : 96.0;
+                final bottomInset = (isCompact ? 96.0 : 132.0) + viewPadding.bottom;
 
                 final hero = _QuickStartHero(
                   onExploreEmotions: () => appState.showView(AppView.manageEmotions),
                   isCompact: isCompact,
+                  isSuperCompact: isSuperCompact,
                   isWide: isWide,
                 );
 
                 final exploreButton = _HomeSidePanel(
                   onExploreEmotions: () => appState.showView(AppView.manageEmotions),
+                  isCompact: isCompact,
+                  isSuperCompact: isSuperCompact,
                 );
 
                 return Align(
                   alignment: Alignment.topCenter,
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.fromLTRB(horizontal, vertical, horizontal, (vertical - 12) + bottomInset),
+                    padding: EdgeInsets.fromLTRB(horizontal, vertical, horizontal, bottomInset),
                     child: ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: contentMaxWidth),
                       child: AnimatedSwitcher(
@@ -58,7 +63,7 @@ class CalmHomeView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             hero,
-                            SizedBox(height: isWide ? 56 : 40),
+                            SizedBox(height: isWide ? 56 : (isCompact ? (isSuperCompact ? 28 : 32) : 44)),
                             Align(
                               alignment: Alignment.center,
                               child: SizedBox(
@@ -85,11 +90,13 @@ class _QuickStartHero extends StatelessWidget {
   const _QuickStartHero({
     required this.onExploreEmotions,
     required this.isCompact,
+    required this.isSuperCompact,
     required this.isWide,
   });
 
   final VoidCallback onExploreEmotions;
   final bool isCompact;
+  final bool isSuperCompact;
   final bool isWide;
 
   @override
@@ -101,13 +108,13 @@ class _QuickStartHero extends StatelessWidget {
 
     final maxHeroWidth = isWide ? 880.0 : (isCompact ? double.infinity : 720.0);
     final heroPadding = EdgeInsets.symmetric(
-      horizontal: isWide ? 40 : (isCompact ? 20 : 32),
-      vertical: isCompact ? 20 : 34,
+      horizontal: isWide ? 40 : (isCompact ? (isSuperCompact ? 16 : 20) : 32),
+      vertical: isCompact ? (isSuperCompact ? 18 : 24) : 34,
     );
     final headlineStyle = (isWide
             ? textTheme.headlineMedium
             : isCompact
-                ? textTheme.titleLarge
+                ? (isSuperCompact ? textTheme.titleMedium : textTheme.titleLarge)
                 : textTheme.headlineSmall)
         ?.copyWith(
       fontWeight: FontWeight.w700,
@@ -145,7 +152,7 @@ class _QuickStartHero extends StatelessWidget {
                 tokens.backgroundSecondary.withValues(alpha: tokens.isDark ? 0.72 : 0.9),
               ],
             ),
-            borderRadius: BorderRadius.circular(isCompact ? 30 : 40),
+            borderRadius: BorderRadius.circular(isCompact ? (isSuperCompact ? 24 : 30) : 40),
             border: Border.all(color: tokens.borderSecondary.withValues(alpha: 0.28)),
             boxShadow: [
               BoxShadow(
@@ -165,7 +172,7 @@ class _QuickStartHero extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: headlineStyle,
                 ),
-                const SizedBox(height: 28),
+                SizedBox(height: isSuperCompact ? 20 : 28),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -173,11 +180,12 @@ class _QuickStartHero extends StatelessWidget {
                       _HeroActionCard(
                         tokens: tokens,
                         title: quickActions[i].title,
+                        isSuperCompact: isSuperCompact,
                         icon: quickActions[i].icon,
                         gradient: quickActions[i].gradient,
                         onPressed: () => showQuickAction(quickActions[i]),
                       ),
-                      if (i != quickActions.length - 1) SizedBox(height: isCompact ? 16 : 22),
+                      if (i != quickActions.length - 1) SizedBox(height: isCompact ? (isSuperCompact ? 12 : 16) : 22),
                     ],
                   ],
                 ),
@@ -382,6 +390,7 @@ class _HeroActionCard extends StatelessWidget {
   const _HeroActionCard({
     required this.tokens,
     required this.title,
+    required this.isSuperCompact,
     required this.icon,
     required this.gradient,
     required this.onPressed,
@@ -389,6 +398,7 @@ class _HeroActionCard extends StatelessWidget {
 
   final FeelBetterTheme tokens;
   final String title;
+  final bool isSuperCompact;
   final IconData icon;
   final List<Color> gradient;
   final VoidCallback onPressed;
@@ -401,17 +411,23 @@ class _HeroActionCard extends StatelessWidget {
     final titleColor = tokens.textPrimary;
     final iconColor = tokens.accentPrimary;
     final iconBackground = tokens.accentPrimary.withValues(alpha: 0.15);
+    final arrowColor = tokens.textSecondary.withValues(alpha: tokens.isDark ? 0.7 : 0.5);
+    final horizontalPadding = isSuperCompact ? 18.0 : 24.0;
+    final verticalPadding = isSuperCompact ? 18.0 : 22.0;
+    final iconPadding = isSuperCompact ? 12.0 : 14.0;
+    final iconSize = isSuperCompact ? 24.0 : 28.0;
+    final radius = BorderRadius.circular(isSuperCompact ? 26 : 32);
 
     return Material(
       color: Colors.transparent,
-      borderRadius: BorderRadius.circular(32),
+      borderRadius: radius,
       child: InkWell(
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: radius,
         onTap: onPressed,
         child: Ink(
           decoration: BoxDecoration(
             color: surface,
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: radius,
             boxShadow: [
               BoxShadow(
                 color: tokens.shadowColor.withValues(alpha: tokens.isDark ? 0.22 : 0.08),
@@ -421,7 +437,7 @@ class _HeroActionCard extends StatelessWidget {
             ],
             border: Border.all(color: borderColor),
           ),
-          padding: const EdgeInsets.fromLTRB(24, 22, 24, 26),
+          padding: EdgeInsets.fromLTRB(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding + 4),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -431,18 +447,18 @@ class _HeroActionCard extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(14),
-                  child: Icon(icon, color: iconColor, size: 28),
+                  padding: EdgeInsets.all(iconPadding),
+                  child: Icon(icon, color: iconColor, size: iconSize),
                 ),
               ),
-              const SizedBox(width: 18),
+              SizedBox(width: isSuperCompact ? 14 : 18),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
-                      style: textTheme.titleLarge?.copyWith(
+                      style: (isSuperCompact ? textTheme.titleMedium : textTheme.titleLarge)?.copyWith(
                         fontWeight: FontWeight.w700,
                         color: titleColor,
                       ),
@@ -450,7 +466,7 @@ class _HeroActionCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.arrow_forward_ios_rounded, size: 18, color: Colors.white70),
+              Icon(Icons.arrow_forward_ios_rounded, size: isSuperCompact ? 16 : 18, color: arrowColor),
             ],
           ),
         ),
@@ -460,13 +476,19 @@ class _HeroActionCard extends StatelessWidget {
 }
 
 class _HomeSidePanel extends StatelessWidget {
-  const _HomeSidePanel({required this.onExploreEmotions});
+  const _HomeSidePanel({required this.onExploreEmotions, required this.isCompact, required this.isSuperCompact});
 
   final VoidCallback onExploreEmotions;
+  final bool isCompact;
+  final bool isSuperCompact;
 
   @override
   Widget build(BuildContext context) {
     final tokens = AppTheme.tokens(context);
+    final buttonPadding = EdgeInsets.symmetric(
+      horizontal: isCompact ? (isSuperCompact ? 20 : 24) : 28,
+      vertical: isCompact ? (isSuperCompact ? 14 : 16) : 18,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -501,7 +523,7 @@ class _HomeSidePanel extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 foregroundColor: tokens.textOnAccent,
                 shadowColor: Colors.transparent,
-                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+                padding: buttonPadding,
                 textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
