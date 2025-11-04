@@ -15,10 +15,11 @@ Feel Better is a cross-platform emotional repair toolkit built with Flutter. It 
 5. [Screenshots](#screenshots)
 6. [Prerequisites](#prerequisites)
 7. [Getting started](#getting-started)
-8. [Development scripts](#development-scripts)
-9. [Testing](#testing)
-10. [Contributing](#contributing)
-11. [License](#license)
+8. [Dependencies](#dependencies)
+9. [Development scripts](#development-scripts)
+10. [Testing](#testing)
+11. [Contributing](#contributing)
+12. [License](#license)
 
 ## Features
 
@@ -74,8 +75,8 @@ Each theme defines colour tokens for surface backgrounds, typography, elevation,
 
 ## Prerequisites
 
-- Flutter SDK >= 3.35.0 (stable channel recommended)
-- Dart >= 3.2
+- Flutter SDK >= 3.29.0 (stable channel recommended)
+- Dart >= 3.7
 - A recent version of Android Studio, VS Code, or another Flutter-capable IDE
 - For desktop builds, ensure the relevant platform tooling is installed (see [Flutter desktop docs](https://docs.flutter.dev/desktop)).
 
@@ -100,6 +101,18 @@ flutter run -d linux       # Linux desktop
 ### Environment variables
 
 No secret keys are required for the default build. If you extend the app with networked services, create a `.env` file and load it via your chosen configuration approach.
+
+## Dependencies
+
+The project relies on the following first-party Flutter packages (locked via `pubspec.yaml`):
+
+- `provider` ^6.1.5 — state management via `ChangeNotifier`.
+- `shared_preferences` ^2.5.3 — lightweight on-device persistence.
+- `google_fonts` ^6.3.2 — typography sourced from fonts.google.com.
+- `url_launcher` ^6.3.2 — external links and platform deep links.
+- `cupertino_icons` ^1.0.8 — iOS-style iconography for cross-platform polish.
+
+Keep Flutter and Dart in sync with the versions listed in [Prerequisites](#prerequisites) before updating these packages.
 
 ## Development scripts
 
