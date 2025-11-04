@@ -365,9 +365,9 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
         final isCompact = width < 640;
         final tabIsScrollable = isCompact;
         final selectedMeta = _personalCategories.firstWhere((meta) => meta.category == _selectedPersonalCategory);
-        final bottomHeight = _currentGroup == _StrategyGroup.personal
-            ? (isCompact ? 82.0 : 94.0)
-            : (isCompact ? 132.0 : 148.0);
+        final chipRowHeight = isCompact ? 44.0 : 48.0;
+        final relationshipTabHeight = isCompact ? 60.0 : 56.0;
+        final bottomHeight = chipRowHeight + 16 + (_currentGroup == _StrategyGroup.relationship ? relationshipTabHeight + 16 : 0) + 16;
 
         return Scaffold(
           backgroundColor: tokens.backgroundPrimary,
@@ -398,12 +398,16 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        for (final group in _StrategyGroup.values)
-                          ChoiceChip(
+                    SizedBox(
+                      height: chipRowHeight,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.zero,
+                        itemCount: _StrategyGroup.values.length,
+                        separatorBuilder: (_, __) => const SizedBox(width: 8),
+                        itemBuilder: (context, index) {
+                          final group = _StrategyGroup.values[index];
+                          return ChoiceChip(
                             label: Text(group.label),
                             avatar: Icon(group.icon, size: 18),
                             selected: _currentGroup == group,
@@ -418,8 +422,9 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
                                 _currentGroup = group;
                               });
                             },
-                          ),
-                      ],
+                          );
+                        },
+                      ),
                     ),
                     if (_currentGroup == _StrategyGroup.relationship)
                       Padding(
@@ -432,7 +437,7 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
                           tabs: _relationshipCategories
                               .map(
                                 (meta) => Tab(
-                                  height: isCompact ? 56 : null,
+                                  height: relationshipTabHeight,
                                   iconMargin: EdgeInsets.only(bottom: isCompact ? 2 : 6),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
