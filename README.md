@@ -15,15 +15,17 @@ Feel Better is a cross-platform emotional repair toolkit built with Flutter. It 
 5. [Screenshots](#screenshots)
 6. [Prerequisites](#prerequisites)
 7. [Getting started](#getting-started)
-8. [Development scripts](#development-scripts)
-9. [Testing](#testing)
-10. [Contributing](#contributing)
-11. [License](#license)
+8. [Dependencies](#dependencies)
+9. [Development scripts](#development-scripts)
+10. [Testing](#testing)
+11. [Contributing](#contributing)
+12. [License](#license)
 
 ## Features
 
-- **Minimal, responsive calm home** – Compact quick-action hero that works beautifully on phones, tablets, and desktops.
-- **Evidence-rich strategy library** – Emotion pages surface immediate, short-term, long-term, relationship-support, and self-repair plans with source badges.
+- **Minimal, responsive calm home** – Compact quick-action hero that now gracefully scales below 380 logical pixels with tuned typography, spacing, and card sizing.
+- **Evidence-rich strategy planner** – Personal care chips let you flip between immediate, short-term, and long-term actions, while Support Network tabs collect relationship support and repair strategies.
+- **Polished compact menus** – Icon-first overflow menus keep quick actions legible and harmonious on small Android devices.
 - **Guided breathwork** – Built-in Breathe view provides quick parasympathetic resets.
 - **Journaling & history** – Capture reflections, review past logs, and maintain streaks that reinforce positive habits.
 - **Analytics dashboard** – Visualise emotion trends to identify triggers and patterns over time.
@@ -60,10 +62,21 @@ Feel Better ships with the following theme families:
 
 Each theme defines colour tokens for surface backgrounds, typography, elevation, and emotion-specific accents. Components consume these tokens exclusively through the `FeelBetterTheme` extension to ensure consistency and smooth runtime switching.
 
+## Responsive layout highlights
+
+- Calm Home hero cards, buttons, and quick actions compress elegantly on ultra-compact devices.
+- Manage Emotions tiles use refined padding, smaller type ramps, and iconised menus to prevent overflow.
+- Manage Strategies view separates "My care plan" and "Support network" flows, with reorderable lists and tabbed relationship guidance.
+- Overflow menus across the app adopt rounded shapes, contextual icons, and consistent spacing for an aesthetically calm experience.
+
+## Screenshots
+
+> _Add refreshed screenshots or animated GIFs showcasing compact and desktop breakpoints._
+
 ## Prerequisites
 
-- Flutter SDK >= 3.35.0 (stable channel recommended)
-- Dart >= 3.2
+- Flutter SDK >= 3.29.0 (stable channel recommended)
+- Dart >= 3.7
 - A recent version of Android Studio, VS Code, or another Flutter-capable IDE
 - For desktop builds, ensure the relevant platform tooling is installed (see [Flutter desktop docs](https://docs.flutter.dev/desktop)).
 
@@ -84,6 +97,18 @@ flutter run -d macos       # macOS desktop
 flutter run -d windows     # Windows desktop
 flutter run -d linux       # Linux desktop
 ```
+
+## Dependencies
+
+The project relies on the following first-party Flutter packages (locked via `pubspec.yaml`):
+
+- `provider` ^6.1.5 — state management via `ChangeNotifier`.
+- `shared_preferences` ^2.5.3 — lightweight on-device persistence.
+- `google_fonts` ^6.3.2 — typography sourced from fonts.google.com.
+- `url_launcher` ^6.3.2 — external links and platform deep links.
+- `cupertino_icons` ^1.0.8 — iOS-style iconography for cross-platform polish.
+
+Keep Flutter and Dart in sync with the versions listed in [Prerequisites](#prerequisites) before updating these packages.
 
 ## Development scripts
 

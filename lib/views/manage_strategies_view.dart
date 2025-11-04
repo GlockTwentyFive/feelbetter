@@ -19,6 +19,18 @@ class ManageStrategiesView extends StatefulWidget {
   State<ManageStrategiesView> createState() => _ManageStrategiesViewState();
 }
 
+enum _StrategyAction { edit, delete }
+
+enum _StrategyGroup {
+  personal('My care plan', Icons.self_improvement_rounded),
+  relationship('Support network', Icons.diversity_3_rounded);
+
+  const _StrategyGroup(this.label, this.icon);
+
+  final String label;
+  final IconData icon;
+}
+
 class _RelationshipStrategyList extends StatelessWidget {
   const _RelationshipStrategyList({super.key, required this.meta, required this.items});
 
@@ -55,6 +67,128 @@ class _RelationshipStrategyList extends StatelessWidget {
           _RelationshipStrategyCard(item: items[i], meta: meta),
           if (i != items.length - 1) const SizedBox(height: 16),
         ],
+      ],
+    );
+  }
+}
+
+class _PersonalStrategyColumn extends StatelessWidget {
+  const _PersonalStrategyColumn({
+    super.key,
+    required this.emotionId,
+    required this.tokens,
+    required this.categories,
+    required this.strategySet,
+    required this.isCompact,
+    required this.selectedCategory,
+    required this.onCategoryChanged,
+    required this.openForm,
+  });
+
+  final String emotionId;
+  final FeelBetterTheme tokens;
+  final List<_CategoryMeta> categories;
+  final EmotionStrategySet strategySet;
+  final bool isCompact;
+  final StrategyCategory selectedCategory;
+  final ValueChanged<StrategyCategory> onCategoryChanged;
+  final void Function(StrategyCategory category, StrategyItem? item) openForm;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final currentMeta = categories.firstWhere((meta) => meta.category == selectedCategory);
+    final items = currentMeta.itemsFor(strategySet);
+    final palette = tokens.emotion(currentMeta.paletteKey);
+
+    return ListView(
+      padding: EdgeInsets.fromLTRB(16, isCompact ? 16 : 24, 16, isCompact ? 112 : 128),
+      children: [
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: tokens.backgroundSecondary.withValues(alpha: tokens.isDark ? 0.85 : 0.95),
+            borderRadius: BorderRadius.circular(22),
+            border: Border.all(color: tokens.borderSecondary.withValues(alpha: 0.24)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Focus area',
+                  style: textTheme.labelMedium?.copyWith(
+                    color: tokens.textSecondary,
+                    letterSpacing: 0.4,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    for (final meta in categories)
+                      FilterChip(
+                        selected: meta.category == selectedCategory,
+                        onSelected: (_) => onCategoryChanged(meta.category!),
+                        avatar: Icon(meta.icon, size: 18, color: tokens.textSecondary.withValues(alpha: 0.8)),
+                        selectedColor: tokens.emotion(meta.paletteKey).background.withValues(alpha: tokens.isDark ? 0.65 : 0.45),
+                        backgroundColor: tokens.backgroundPrimary.withValues(alpha: tokens.isDark ? 0.28 : 0.5),
+                        checkmarkColor: tokens.textPrimary,
+                        label: Text(meta.label),
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Text(
+          currentMeta.intro,
+          style: textTheme.bodyMedium?.copyWith(color: tokens.textSecondary, height: 1.45),
+        ),
+        const SizedBox(height: 16),
+        if (items.isEmpty)
+          Column(
+            children: [
+              Icon(Icons.lightbulb_outline_rounded, size: 44, color: palette.solid),
+              const SizedBox(height: 12),
+              Text(
+                currentMeta.emptyHint,
+                textAlign: TextAlign.center,
+                style: textTheme.bodyMedium?.copyWith(color: tokens.textSecondary, height: 1.4),
+              ),
+              const SizedBox(height: 18),
+              FilledButton.icon(
+                onPressed: () => openForm(currentMeta.category!, null),
+                icon: const Icon(Icons.add_task_rounded),
+                label: const Text('Create a first checkpoint'),
+              ),
+            ],
+          )
+        else
+          ReorderableListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            itemCount: items.length,
+            onReorder: (oldIndex, newIndex) {
+              context.read<AppState>().reorderStrategyItems(emotionId, currentMeta.category!, oldIndex, newIndex);
+            },
+            itemBuilder: (context, index) {
+              final item = items[index];
+              return _StrategyRow(
+                key: ValueKey(item.id),
+                item: item,
+                category: currentMeta.category!,
+                emotionId: emotionId,
+                onEdit: () => openForm(currentMeta.category!, item),
+                index: index,
+                isCompact: isCompact,
+              );
+            },
+          ),
       ],
     );
   }
@@ -150,6 +284,10 @@ class _RelationshipStrategyCard extends StatelessWidget {
 class _ManageStrategiesViewState extends State<ManageStrategiesView> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
   late List<_CategoryMeta> _categories;
+  late List<_CategoryMeta> _relationshipCategories;
+  late List<_CategoryMeta> _personalCategories;
+  late _StrategyGroup _currentGroup;
+  late StrategyCategory _selectedPersonalCategory;
 
   @override
   void initState() {
@@ -196,7 +334,11 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
         paletteKey: 'amber',
       ),
     ];
-    _tabController = TabController(length: _categories.length, vsync: this);
+    _personalCategories = _categories.where((meta) => meta.isEditable).toList(growable: false);
+    _relationshipCategories = _categories.where((meta) => !meta.isEditable).toList(growable: false);
+    _tabController = TabController(length: _relationshipCategories.length, vsync: this);
+    _currentGroup = _StrategyGroup.personal;
+    _selectedPersonalCategory = _personalCategories.first.category!;
     _tabController.addListener(() {
       if (!mounted) return;
       setState(() {});
@@ -219,70 +361,156 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
         final emotion = appState.emotionById(widget.emotionId) ??
             EmotionDefinition(id: widget.emotionId, name: widget.emotionId);
         final strategySet = appState.strategySetFor(widget.emotionId);
+        final width = MediaQuery.of(context).size.width;
+        final isCompact = width < 640;
+        final tabIsScrollable = isCompact;
+        final selectedMeta = _personalCategories.firstWhere((meta) => meta.category == _selectedPersonalCategory);
+        final chipRowHeight = isCompact ? 44.0 : 48.0;
+        final relationshipTabHeight = isCompact ? 60.0 : 56.0;
+        final bottomHeight = chipRowHeight + 16 + (_currentGroup == _StrategyGroup.relationship ? relationshipTabHeight + 16 : 0) + 16;
 
         return Scaffold(
           backgroundColor: tokens.backgroundPrimary,
           appBar: AppBar(
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Manage strategies'),
+                Text(
+                  'Manage strategies',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: isCompact ? 2 : 4),
                 Text(
                   emotion.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: textTheme.labelLarge?.copyWith(color: tokens.textSecondary),
                 ),
               ],
             ),
-            bottom: TabBar(
-              controller: _tabController,
-              tabs: _categories
-                  .map(
-                    (meta) => Tab(
-                      text: meta.label,
-                      icon: EmotionIcon(icon: meta.icon, paletteKey: meta.paletteKey, size: 20),
+            toolbarHeight: isCompact ? 72 : null,
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(bottomHeight),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: chipRowHeight,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.zero,
+                        itemCount: _StrategyGroup.values.length,
+                        separatorBuilder: (_, __) => const SizedBox(width: 8),
+                        itemBuilder: (context, index) {
+                          final group = _StrategyGroup.values[index];
+                          return ChoiceChip(
+                            label: Text(group.label),
+                            avatar: Icon(group.icon, size: 18),
+                            selected: _currentGroup == group,
+                            selectedColor: Theme.of(context).colorScheme.secondaryContainer,
+                            backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 0.6),
+                            labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: _currentGroup == group ? FontWeight.w600 : FontWeight.w500,
+                                ),
+                            onSelected: (selected) {
+                              if (!selected) return;
+                              setState(() {
+                                _currentGroup = group;
+                              });
+                            },
+                          );
+                        },
+                      ),
                     ),
-                  )
-                  .toList(),
+                    if (_currentGroup == _StrategyGroup.relationship)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: TabBar(
+                          controller: _tabController,
+                          isScrollable: tabIsScrollable,
+                          tabAlignment: tabIsScrollable ? TabAlignment.start : TabAlignment.fill,
+                          labelPadding: tabIsScrollable ? const EdgeInsets.symmetric(horizontal: 12) : null,
+                          tabs: _relationshipCategories
+                              .map(
+                                (meta) => Tab(
+                                  height: relationshipTabHeight,
+                                  iconMargin: EdgeInsets.only(bottom: isCompact ? 2 : 6),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      EmotionIcon(icon: meta.icon, paletteKey: meta.paletteKey, size: isCompact ? 18 : 20),
+                                      const SizedBox(height: 4),
+                                      Flexible(
+                                        child: Text(
+                                          meta.label,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
-          floatingActionButton: _categories[_tabController.index].isEditable
+          floatingActionButton: _currentGroup == _StrategyGroup.personal
               ? FloatingActionButton.extended(
-                  onPressed: () => _openStrategyForm(context, strategySet, _categories[_tabController.index].category!, null),
+                  onPressed: () => _openStrategyForm(context, strategySet, _selectedPersonalCategory, null),
                   icon: const Icon(Icons.add_task_rounded),
-                  label: const Text('Add strategy'),
+                  label: Text('Add ${selectedMeta.label.toLowerCase()} step'),
                 )
               : null,
-          body: TabBarView(
-            controller: _tabController,
-            children: _categories
-                .map(
-                  (meta) {
-                    final items = meta.itemsFor(strategySet);
-                    if (meta.isEditable) {
-                      return _StrategyList(
-                        key: PageStorageKey('${widget.emotionId}-${meta.storageKey}'),
-                        emotionId: widget.emotionId,
-                        category: meta.category!,
-                        items: items,
-                        onEdit: (item) => _openStrategyForm(context, strategySet, meta.category!, item),
-                        emptyHint: meta.emptyHint,
-                      );
-                    }
-                    return _RelationshipStrategyList(
-                      key: PageStorageKey('${widget.emotionId}-${meta.storageKey}'),
-                      meta: meta,
-                      items: items,
-                    );
-                  },
-                )
-                .toList(),
+          body: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 320),
+            switchInCurve: Curves.easeOutQuad,
+            switchOutCurve: Curves.easeInQuad,
+            child: _currentGroup == _StrategyGroup.personal
+                ? _PersonalStrategyColumn(
+                    key: const ValueKey('personal-strategies'),
+                    emotionId: widget.emotionId,
+                    tokens: tokens,
+                    categories: _personalCategories,
+                    strategySet: strategySet,
+                    isCompact: isCompact,
+                    selectedCategory: _selectedPersonalCategory,
+                    onCategoryChanged: (category) {
+                      setState(() {
+                        _selectedPersonalCategory = category;
+                      });
+                    },
+                    openForm: (category, item) => _openStrategyForm(context, strategySet, category, item),
+                  )
+                : TabBarView(
+                    key: const ValueKey('relationship-strategies'),
+                    controller: _tabController,
+                    children: _relationshipCategories
+                        .map(
+                          (meta) {
+                            final items = meta.itemsFor(strategySet);
+                            return _RelationshipStrategyList(
+                              key: PageStorageKey('${widget.emotionId}-${meta.storageKey}'),
+                              meta: meta,
+                              items: items,
+                            );
+                          },
+                        )
+                        .toList(),
+                  ),
           ),
         );
       },
     );
   }
-
-  StrategyCategory? get currentCategory => _categories[_tabController.index].category;
 
   void _openStrategyForm(
     BuildContext context,
@@ -305,59 +533,6 @@ class _ManageStrategiesViewState extends State<ManageStrategiesView> with Single
   }
 }
 
-class _StrategyList extends StatelessWidget {
-  const _StrategyList({
-    super.key,
-    required this.emotionId,
-    required this.category,
-    required this.items,
-    required this.onEdit,
-    required this.emptyHint,
-  });
-
-  final String emotionId;
-  final StrategyCategory category;
-  final List<StrategyItem> items;
-  final ValueChanged<StrategyItem> onEdit;
-  final String emptyHint;
-
-  @override
-  Widget build(BuildContext context) {
-    final tokens = AppTheme.tokens(context);
-    if (items.isEmpty) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Text(
-            emptyHint,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: tokens.textSecondary),
-          ),
-        ),
-      );
-    }
-
-    return ReorderableListView.builder(
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
-      itemCount: items.length,
-      onReorder: (oldIndex, newIndex) {
-        context.read<AppState>().reorderStrategyItems(emotionId, category, oldIndex, newIndex);
-      },
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return _StrategyRow(
-          key: ValueKey(item.id),
-          item: item,
-          category: category,
-          emotionId: emotionId,
-          onEdit: () => onEdit(item),
-          index: index,
-        );
-      },
-    );
-  }
-}
-
 class _StrategyRow extends StatefulWidget {
   const _StrategyRow({
     super.key,
@@ -366,6 +541,7 @@ class _StrategyRow extends StatefulWidget {
     required this.emotionId,
     required this.onEdit,
     required this.index,
+    required this.isCompact,
   });
 
   final StrategyItem item;
@@ -373,6 +549,7 @@ class _StrategyRow extends StatefulWidget {
   final String emotionId;
   final VoidCallback onEdit;
   final int index;
+  final bool isCompact;
 
   @override
   State<_StrategyRow> createState() => _StrategyRowState();
@@ -423,14 +600,17 @@ class _StrategyRowState extends State<_StrategyRow> {
 
     return Padding(
       key: widget.key,
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(bottom: widget.isCompact ? 12 : 16),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(24),
           onTap: widget.onEdit,
           child: Ink(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+            padding: EdgeInsets.symmetric(
+              horizontal: widget.isCompact ? 16 : 20,
+              vertical: widget.isCompact ? 16 : 18,
+            ),
             decoration: BoxDecoration(
               color: tokens.backgroundSecondary,
               borderRadius: BorderRadius.circular(24),
@@ -461,6 +641,7 @@ class _StrategyRowState extends State<_StrategyRow> {
                                   style: textTheme.titleMedium?.copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: tokens.textPrimary,
+                                    fontSize: widget.isCompact ? 15 : null,
                                   ),
                                 ),
                               ),
@@ -495,25 +676,59 @@ class _StrategyRowState extends State<_StrategyRow> {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    SizedBox(width: widget.isCompact ? 8 : 12),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(
-                          tooltip: 'Edit strategy',
-                          onPressed: widget.onEdit,
-                          icon: const Icon(Icons.edit_outlined),
-                        ),
-                        IconButton(
-                          tooltip: 'Remove strategy',
-                          onPressed: () => _confirmRemove(context),
-                          icon: const Icon(Icons.delete_outline),
+                        PopupMenuButton<_StrategyAction>(
+                          tooltip: 'Strategy options',
+                          padding: EdgeInsets.zero,
+                          position: PopupMenuPosition.under,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                          icon: Icon(
+                            Icons.more_vert_rounded,
+                            size: widget.isCompact ? 20 : 22,
+                            color: tokens.textSecondary.withValues(alpha: 0.8),
+                          ),
+                          onSelected: (action) {
+                            switch (action) {
+                              case _StrategyAction.edit:
+                                widget.onEdit();
+                                break;
+                              case _StrategyAction.delete:
+                                _confirmRemove(context);
+                                break;
+                            }
+                          },
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: _StrategyAction.edit,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.edit_outlined, size: 18, color: tokens.textSecondary),
+                                  const SizedBox(width: 10),
+                                  const Text('Edit strategy'),
+                                ],
+                              ),
+                            ),
+                            PopupMenuItem(
+                              value: _StrategyAction.delete,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.delete_outline, size: 18, color: tokens.textSecondary),
+                                  const SizedBox(width: 10),
+                                  const Text('Remove strategy'),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                         ReorderableDragStartListener(
                           index: widget.index,
                           child: Icon(
                             Icons.drag_handle_rounded,
                             color: tokens.textSecondary.withValues(alpha: 0.7),
+                            size: widget.isCompact ? 20 : 22,
                           ),
                         ),
                       ],
@@ -521,12 +736,12 @@ class _StrategyRowState extends State<_StrategyRow> {
                   ],
                 ),
                 if (instructions.isNotEmpty) ...[
-                  const SizedBox(height: 14),
+                  SizedBox(height: widget.isCompact ? 10 : 14),
                   Column(
                     children: [
                       for (var i = 0; i < instructions.length; i++)
                         Padding(
-                          padding: EdgeInsets.only(bottom: i == instructions.length - 1 ? 0 : 10),
+                          padding: EdgeInsets.only(bottom: i == instructions.length - 1 ? 0 : (widget.isCompact ? 8 : 10)),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(16),
                             onTap: () => _toggle(i),
@@ -542,14 +757,17 @@ class _StrategyRowState extends State<_StrategyRow> {
                                   color: tokens.borderSecondary.withValues(alpha: _checks[i] ? 0.6 : 0.3),
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: widget.isCompact ? 12 : 14,
+                                vertical: widget.isCompact ? 10 : 12,
+                              ),
                               child: Row(
                                 children: [
                                   AnimatedContainer(
                                     duration: const Duration(milliseconds: 220),
                                     curve: Curves.easeOut,
-                                    width: 22,
-                                    height: 22,
+                                    width: widget.isCompact ? 20 : 22,
+                                    height: widget.isCompact ? 20 : 22,
                                     decoration: BoxDecoration(
                                       color: _checks[i]
                                           ? tokens.accentPrimary.withValues(alpha: tokens.isDark ? 0.9 : 0.8)
@@ -558,10 +776,10 @@ class _StrategyRowState extends State<_StrategyRow> {
                                       border: Border.all(color: tokens.accentPrimary.withValues(alpha: 0.6), width: 2),
                                     ),
                                     child: _checks[i]
-                                        ? const Icon(Icons.check_rounded, size: 16, color: Colors.white)
+                                        ? Icon(Icons.check_rounded, size: widget.isCompact ? 14 : 16, color: Colors.white)
                                         : null,
                                   ),
-                                  const SizedBox(width: 12),
+                                  SizedBox(width: widget.isCompact ? 10 : 12),
                                   Expanded(
                                     child: Text(
                                       instructions[i],
@@ -569,6 +787,7 @@ class _StrategyRowState extends State<_StrategyRow> {
                                         color: _checks[i] ? tokens.textPrimary : tokens.textSecondary,
                                         fontWeight: _checks[i] ? FontWeight.w600 : FontWeight.w500,
                                         height: 1.45,
+                                        fontSize: widget.isCompact ? 13 : null,
                                       ),
                                     ),
                                   ),
