@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/app_state.dart';
 import '../theme/app_theme.dart';
+import 'manage_emotions_view.dart';
 
 class CalmHomeView extends StatelessWidget {
   const CalmHomeView({super.key});
@@ -168,7 +169,7 @@ class _QuickStartHero extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'What do you need right now?',
+                  "Let's take a gentle moment together",
                   textAlign: TextAlign.center,
                   style: headlineStyle,
                 ),
@@ -200,42 +201,42 @@ class _QuickStartHero extends StatelessWidget {
   List<_QuickActionData> _buildQuickActions(FeelBetterTheme tokens) {
     return [
       _QuickActionData(
-        title: 'Steady me',
+        title: 'I need steadying',
         icon: Icons.self_improvement_rounded,
         gradient: [tokens.accentPrimary, tokens.accentSecondary],
-        intro: 'Use this quick grounding sequence when everything feels fuzzy and you need a calmer baseline first.',
+        intro: 'A soft grounding sequence for the moments when everything feels fuzzy and you want a calmer baseline first.',
         steps: const [
           _QuickActionStep(
-            title: 'Anchor your breath',
-            detail: 'Inhale for 4, hold for 1, exhale for 6. Drop your shoulders on every exhale for 6 cycles.',
+            title: 'Soften your breath',
+            detail: 'Breathe in for 4, pause for 1, and exhale for 6. Let your shoulders melt on every out-breath for 6 gentle rounds.',
           ),
           _QuickActionStep(
-            title: 'Reset your senses',
-            detail: 'Press your palms together for 5 seconds, release, then name one thing you can see, hear, and touch.',
+            title: 'Settle your senses',
+            detail: 'Press your palms together for 5 seconds, release, then quietly name one thing you can see, hear, and touch.',
           ),
           _QuickActionStep(
-            title: 'Choose one gentle action',
-            detail: 'Sip water, stand and stretch, or step outside for fresh air for 30 seconds.',
+            title: 'Offer yourself one gentle action',
+            detail: 'Sip water, stand and stretch, or step outside for fresh air for half a minute—whichever feels kindest.',
           ),
         ],
       ),
       _QuickActionData(
-        title: 'Pick my next move',
+        title: 'Choose my next caring step',
         icon: Icons.explore_rounded,
         gradient: [tokens.accentTertiary, tokens.accentPrimary],
-        intro: 'Walk through these prompts to spot what needs care right now and choose a small move.',
+        intro: 'Follow these prompts to notice what needs care right now and choose a tiny next step that feels supportive.',
         steps: const [
           _QuickActionStep(
-            title: 'Notice your signal',
-            detail: 'Ask “What is loudest—my body, my thoughts, or the situation?” Write down the first answer.',
+            title: "Notice what's loud",
+            detail: 'Ask “What feels loudest—my body, my thoughts, or the situation?” Jot down whatever surfaces first.',
           ),
           _QuickActionStep(
-            title: 'Match a support',
-            detail: 'Body loud? Try breath or movement. Thoughts loud? Jot them down. Situation loud? List one thing you can influence.',
+            title: 'Match a kind support',
+            detail: 'Body loud? Try a breath or movement. Thoughts loud? Scribble them out. Situation loud? Note one thing you can gently influence.',
           ),
           _QuickActionStep(
-            title: 'Start the next micro-step',
-            detail: 'Set a 2-minute timer and begin that one action. Check in again afterward to see what shifted.',
+            title: 'Begin with one micro-step',
+            detail: 'Set a 2-minute timer, start that one action, and check back in afterward to notice any shift.',
           ),
         ],
       ),
@@ -350,11 +351,15 @@ class _QuickActionSheet extends StatelessWidget {
             const SizedBox(height: 28),
             FilledButton.icon(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (context) => const ManageEmotionsView(),
+                  ),
+                );
                 onExploreEmotions();
               },
               icon: const Icon(Icons.grid_view_rounded),
-              label: const Text('Browse all emotions'),
+              label: const Text('See emotion support library'),
             ),
           ],
         ),
@@ -518,7 +523,7 @@ class _HomeSidePanel extends StatelessWidget {
             child: FilledButton.icon(
               onPressed: onExploreEmotions,
               icon: const Icon(Icons.grid_view_rounded),
-              label: const Text('Explore every emotion'),
+              label: const Text('Open emotion support library'),
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.transparent,
                 foregroundColor: tokens.textOnAccent,
